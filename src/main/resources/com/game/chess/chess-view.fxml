@@ -3,66 +3,109 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Text?>
-<BorderPane stylesheets="Chess.css" styleClass="root, body" xmlns:fx="http://javafx.com/fxml" fx:controller="com.game.chess.ChessController">
+<BorderPane stylesheets="@Chess.css" styleClass="root, body" xmlns:fx="http://javafx.com/fxml" fx:controller="com.game.chess.ChessController">
     <top>
         <VBox styleClass="centerThis">
             <Text text="Chess" styleClass="title"/>
             <Label fx:id="errorSpot" styleClass="txtStyle"/>
-            <Button text="  Restart  "  styleClass="win-button"/>
+            <Button text="  Restart  " onAction="#restart" styleClass="win-button"/>
         </VBox>
     </top>
     <center>
-        <GridPane styleClass="wrapper,centerThis">
+        <GridPane styleClass="wrapper" alignment="CENTER">
             <VBox styleClass="container">
-                <HBox styleClass="input-group">
-                    <TextField fx:id="Guess1L1" styleClass="input-box"/>
-                    <TextField fx:id="Guess1L2" styleClass="input-box"/>
-                    <TextField fx:id="Guess1L3" styleClass="input-box"/>
-                    <TextField fx:id="Guess1L4" styleClass="input-box"/>
-                    <TextField fx:id="Guess1L5" styleClass="input-box"/>
+                <HBox>
+                    <Button fx:id="buttonA1" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonB1" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonC1" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonD1" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonE1" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonF1" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonG1" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonH1" styleClass="chess-button, even" onAction="#handleButtonClick"/>
                 </HBox>
-                <HBox styleClass="input-group">
-                    <TextField fx:id="Guess2L1" styleClass="input-box"/>
-                    <TextField fx:id="Guess2L2" styleClass="input-box"/>
-                    <TextField fx:id="Guess2L3" styleClass="input-box"/>
-                    <TextField fx:id="Guess2L4" styleClass="input-box"/>
-                    <TextField fx:id="Guess2L5" styleClass="input-box"/>
+
+                <HBox>
+                    <Button fx:id="buttonA2" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonB2" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonC2" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonD2" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonE2" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonF2" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonG2" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonH2" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
                 </HBox>
-                <HBox styleClass="input-group">
-                    <TextField fx:id="Guess3L1" styleClass="input-box"/>
-                    <TextField fx:id="Guess3L2" styleClass="input-box"/>
-                    <TextField fx:id="Guess3L3" styleClass="input-box"/>
-                    <TextField fx:id="Guess3L4" styleClass="input-box"/>
-                    <TextField fx:id="Guess3L5" styleClass="input-box"/>
+
+                <HBox>
+                    <Button fx:id="buttonA3" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonB3" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonC3" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonD3" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonE3" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonF3" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonG3" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonH3" styleClass="chess-button, even" onAction="#handleButtonClick"/>
                 </HBox>
-                <HBox styleClass="input-group">
-                    <TextField fx:id="Guess4L1" styleClass="input-box"/>
-                    <TextField fx:id="Guess4L2" styleClass="input-box"/>
-                    <TextField fx:id="Guess4L3" styleClass="input-box"/>
-                    <TextField fx:id="Guess4L4" styleClass="input-box"/>
-                    <TextField fx:id="Guess4L5" styleClass="input-box"/>
+
+                <HBox>
+                    <Button fx:id="buttonA4" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonB4" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonC4" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonD4" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonE4" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonF4" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonG4" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonH4" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
                 </HBox>
-                <HBox styleClass="input-group">
-                    <TextField fx:id="Guess5L1" styleClass="input-box"/>
-                    <TextField fx:id="Guess5L2" styleClass="input-box"/>
-                    <TextField fx:id="Guess5L3" styleClass="input-box"/>
-                    <TextField fx:id="Guess5L4" styleClass="input-box"/>
-                    <TextField fx:id="Guess5L5" styleClass="input-box"/>
+
+                <HBox>
+                    <Button fx:id="buttonA5" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonB5" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonC5" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonD5" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonE5" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonF5" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonG5" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonH5" styleClass="chess-button, even" onAction="#handleButtonClick"/>
                 </HBox>
-                <HBox styleClass="input-group">
-                    <TextField fx:id="Guess6L1" styleClass="input-box"/>
-                    <TextField fx:id="Guess6L2" styleClass="input-box"/>
-                    <TextField fx:id="Guess6L3" styleClass="input-box"/>
-                    <TextField fx:id="Guess6L4" styleClass="input-box"/>
-                    <TextField fx:id="Guess6L5" styleClass="input-box"/>
+
+                <HBox>
+                    <Button fx:id="buttonA6" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonB6" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonC6" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonD6" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonE6" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonF6" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonG6" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonH6" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                </HBox>
+
+                <HBox>
+                    <Button fx:id="buttonA7" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonB7" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonC7" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonD7" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonE7" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonF7" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonG7" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonH7" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                </HBox>
+
+                <HBox>
+                    <Button fx:id="buttonA8" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonB8" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonC8" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonD8" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonE8" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonF8" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonG8" styleClass="chess-button, even" onAction="#handleButtonClick"/>
+                    <Button fx:id="buttonH8" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
                 </HBox>
             </VBox>
         </GridPane>
     </center>
-
 </BorderPane>

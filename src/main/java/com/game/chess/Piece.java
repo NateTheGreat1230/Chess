@@ -3,20 +3,16 @@ package com.game.chess;
 import java.util.ArrayList;
 
 public class Piece {
-    final Team pieceTeam;
-    public abstract List<Move> findPossibleMoves(Board board);
+    final Team pieceTeam = null;
+    //public abstract List<Move> findPossibleMoves(Board board);
+    protected Piece() {
+
+    }
     Piece(Team pieceTeam) {
-        this.pieceTeam = pieceTeam;
-    }
-    public Team getPieceTeam() {
-        return this.pieceTeam;
+        //this.pieceTeam = pieceTeam;
     }
 
 }
-class Knight extends Piece {
-    ArrayList<Integer> moves = new ArrayList<>();
-    Knight() {
-
-        super();
-    }
-}
+//    public static Team getPieceTeam() {
+//        return pieceTeam;
+//    }

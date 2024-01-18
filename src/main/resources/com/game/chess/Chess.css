@@ -8,21 +8,33 @@
 .body {
     -fx-background-color: linear-gradient(to bottom right, #8b3ce8, #371263);
 }
-
 .wrapper {
-    -fx-position: absolute;
-    -fx-translate-x: -50%;
-    -fx-translate-y: -50%;
-    -fx-top: 50%;
-    -fx-left: 50%;
-    -fx-display: flex;
-    -fx-gap: 1em;
-    -fx-background-color: #121213ff;
-    -fx-padding: 1em;
-    -fx-background-radius: 25 25 25 25;
-    -fx-max-width: 25em;
-    -fx-max-height: 32em;
-    -fx-alignment: center;
+    -fx-background-color: #0f151f;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+    -fx-max-width: 450;
+    -fx-max-height: 450;
+}
+
+.container {
+    /*-fx-background-color: #f0d9b5; */
+}
+
+.chess-button {
+    -fx-font-size: 16px;
+    -fx-min-width: 50;
+    -fx-min-height: 50;
+    -fx-max-width: 50;
+    -fx-max-height: 50;
+}
+
+
+.odd {
+    -fx-background-color: #1b283d;
+}
+
+.even {
+    -fx-background-color: #e1e3e6;
 }
 .centerThis {
     -fx-alignment: center;
@@ -30,22 +42,6 @@
 }
 .txtStyle {
     -fx-font-size: 1.25em;
-}
-.container {
-    -fx-min-width: 18.75em;
-    -fx-min-height: 22.5em;
-    -fx-max-width: 20em;
-    -fx-max-height: 25em;
-    -fx-alignment: center;
-    -fx-spacing: 5;
-}
-.input-group {
-    -fx-display: grid;
-    -fx-width: 100%;
-    -fx-grid-columns: auto auto auto auto auto;
-    -fx-column-gap: 5em;
-    -fx-margin: 0.2em 0;
-    -fx-spacing: 5;
 }
 .title {
     -fx-position: absolute;
@@ -55,46 +51,9 @@
     -fx-min-height: 1.7em;
     -fx-alignment: center;
 }
-.input-box {
-    -fx-control-inner-background: #121213ff;
-    -fx-focus-color: #000000;
-    -fx-faint-focus-color: #000000;
-    -fx-display-caret: false;
-    -fx-font-size: 1.6em;
-    -fx-text-fill: #f8f8f8;
-    -fx-min-width: 1.7em;
-    -fx-max-width: 2.3em;
-    -fx-min-height: 1.7em;
-    -fx-alignment: center;
-    -fx-border-color: #000000;
-    -fx-background-insets: 0,1,2,3;
-    -fx-background-radius: 0,0,0,0;
-    -fx-highlight-fill: transparent;
-}
-.win-screen {
-    -fx-alignment: center;
-    -fx-padding: 10;
-    -fx-font-weight: 400;
-    -fx-position: relative;
-    -fx-background-color: #121213ff;
-    -fx-border-radius: 0.5em;
-    -fx-border-color: white;
-    -fx-spacing: 10;
-}
 .win-button {
     -fx-font-size: 1.2em;
     -fx-background-color: #538d4eff;
     -fx-text-fill: #f8f8f8;
     -fx-border-radius: 2em;
-}
-.alphabet-button {
-    -fx-min-width: 2.2em;
-    -fx-font-size: 1.2em;
-    -fx-background-color: #818384ff;
-    -fx-text-fill: #f8f8f8;
-    -fx-border-radius: 2em;
-}
-.win-label {
-    -fx-text-fill: #f8f8f8;
-    -fx-font-size: 1.2em;
 }

@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class Game {
     boolean isWhiteTurn = true;
     Game game;
+    public Game() {}
+    public Game(Game game) {
+        this.game = game;
+    }
     public boolean isWhiteTurn() {
         return isWhiteTurn;
     }
