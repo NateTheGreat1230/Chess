@@ -1,8 +1,6 @@
 package com.game.chess;
 
 import com.game.chess.pieces.*;
-import javafx.scene.control.TextField;
-
 import java.util.ArrayList;
 
 public class Team {
@@ -20,12 +18,8 @@ public class Team {
     ArrayList<Knight> knightsList = new ArrayList<>();
     ArrayList<Rook> rooksList = new ArrayList<>();
 
-    protected Team() {
-        for (int i = 0; i < pawns; i++) {
-            Pawn pawn = new Pawn();
-        }
-    }
-    protected Team(String team) {
+    public Team() {}
+    public void makeTeam(String team) {
         this.team = team;
 
         for (int i = 0; i < pawns; i++) {
@@ -53,6 +47,4 @@ public class Team {
             knightsList.add(knight);
         }
     }
-
-
 }

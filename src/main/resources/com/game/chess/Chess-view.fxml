@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
+<BorderPane stylesheets="Chess.css" styleClass="root, body" xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <VBox styleClass="centerThis">
+            <Text text="Wordle" styleClass="title"/>
+            <Label fx:id="errorSpot" styleClass="txtStyle"/>
+        </VBox>
+    </top>
+    <left>
+        <VBox styleClass="centerThis">
+            <Button text="  Restart  "  styleClass="win-button"/>
+        </VBox>
+    </left>
+    <right>
+        <VBox styleClass="centerThis">
+            <Label fx:id="answer" styleClass="txtStyle"/>
+            <Button text="Get Guess" styleClass="win-button"/>
+        </VBox>
+    </right>
+    <center>
+        <GridPane styleClass="wrapper,centerThis">
+            <VBox styleClass="container">
+                <HBox styleClass="input-group">
+                    <TextField fx:id="Guess1L1" styleClass="input-box"/>
+                    <TextField fx:id="Guess1L2" styleClass="input-box"/>
+                    <TextField fx:id="Guess1L3" styleClass="input-box"/>
+                    <TextField fx:id="Guess1L4" styleClass="input-box"/>
+                    <TextField fx:id="Guess1L5" styleClass="input-box"/>
+                </HBox>
+                <HBox styleClass="input-group">
+                    <TextField fx:id="Guess2L1" styleClass="input-box"/>
+                    <TextField fx:id="Guess2L2" styleClass="input-box"/>
+                    <TextField fx:id="Guess2L3" styleClass="input-box"/>
+                    <TextField fx:id="Guess2L4" styleClass="input-box"/>
+                    <TextField fx:id="Guess2L5" styleClass="input-box"/>
+                </HBox>
+                <HBox styleClass="input-group">
+                    <TextField fx:id="Guess3L1" styleClass="input-box"/>
+                    <TextField fx:id="Guess3L2" styleClass="input-box"/>
+                    <TextField fx:id="Guess3L3" styleClass="input-box"/>
+                    <TextField fx:id="Guess3L4" styleClass="input-box"/>
+                    <TextField fx:id="Guess3L5" styleClass="input-box"/>
+                </HBox>
+                <HBox styleClass="input-group">
+                    <TextField fx:id="Guess4L1" styleClass="input-box"/>
+                    <TextField fx:id="Guess4L2" styleClass="input-box"/>
+                    <TextField fx:id="Guess4L3" styleClass="input-box"/>
+                    <TextField fx:id="Guess4L4" styleClass="input-box"/>
+                    <TextField fx:id="Guess4L5" styleClass="input-box"/>
+                </HBox>
+                <HBox styleClass="input-group">
+                    <TextField fx:id="Guess5L1" styleClass="input-box"/>
+                    <TextField fx:id="Guess5L2" styleClass="input-box"/>
+                    <TextField fx:id="Guess5L3" styleClass="input-box"/>
+                    <TextField fx:id="Guess5L4" styleClass="input-box"/>
+                    <TextField fx:id="Guess5L5" styleClass="input-box"/>
+                </HBox>
+                <HBox styleClass="input-group">
+                    <TextField fx:id="Guess6L1" styleClass="input-box"/>
+                    <TextField fx:id="Guess6L2" styleClass="input-box"/>
+                    <TextField fx:id="Guess6L3" styleClass="input-box"/>
+                    <TextField fx:id="Guess6L4" styleClass="input-box"/>
+                    <TextField fx:id="Guess6L5" styleClass="input-box"/>
+                </HBox>
+            </VBox>
+        </GridPane>
+    </center>
+    <bottom>
+        <VBox spacing="5" style="-fx-padding: 0 0 10 0;">
+            <HBox alignment="CENTER" spacing="5">
+                <Button fx:id="btnQ" text="Q" styleClass="alphabet-button" />
+                <Button fx:id="btnW" text="W" styleClass="alphabet-button" />
+                <Button fx:id="btnE" text="E" styleClass="alphabet-button" />
+                <Button fx:id="btnR" text="R" styleClass="alphabet-button" />
+                <Button fx:id="btnT" text="T" styleClass="alphabet-button" />
+                <Button fx:id="btnY" text="Y" styleClass="alphabet-button" />
+                <Button fx:id="btnU" text="U" styleClass="alphabet-button" />
+                <Button fx:id="btnI" text="I" styleClass="alphabet-button" />
+                <Button fx:id="btnO" text="O" styleClass="alphabet-button" />
+                <Button fx:id="btnP" text="P" styleClass="alphabet-button" />
+            </HBox>
+            <HBox alignment="CENTER" spacing="5">
+                <Button fx:id="btnA" text="A" styleClass="alphabet-button" />
+                <Button fx:id="btnS" text="S" styleClass="alphabet-button" />
+                <Button fx:id="btnD" text="D" styleClass="alphabet-button" />
+                <Button fx:id="btnF" text="F" styleClass="alphabet-button" />
+                <Button fx:id="btnG" text="G" styleClass="alphabet-button" />
+                <Button fx:id="btnH" text="H" styleClass="alphabet-button" />
+                <Button fx:id="btnJ" text="J" styleClass="alphabet-button" />
+                <Button fx:id="btnK" text="K" styleClass="alphabet-button" />
+                <Button fx:id="btnL" text="L" styleClass="alphabet-button" />
+            </HBox>
+            <HBox alignment="CENTER" spacing="5">
+                <Button fx:id="btnENT" text=" ↵" styleClass="alphabet-button" />
+                <Button fx:id="btnZ" text="Z" styleClass="alphabet-button" />
+                <Button fx:id="btnX" text="X" styleClass="alphabet-button" />
+                <Button fx:id="btnC" text="C" styleClass="alphabet-button" />
+                <Button fx:id="btnV" text="V" styleClass="alphabet-button" />
+                <Button fx:id="btnB" text="B" styleClass="alphabet-button" />
+                <Button fx:id="btnN" text="N" styleClass="alphabet-button" />
+                <Button fx:id="btnM" text="M" styleClass="alphabet-button" />
+                <Button fx:id="btnDEL" text=" ←" styleClass="alphabet-button" />
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

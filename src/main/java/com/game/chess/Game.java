@@ -21,7 +21,12 @@ public class Game {
     }
     public void initGame(Game game) {
         this.game = game;
-        new Board(new ArrayList<>());
+        //new Board(new ArrayList<>());
+        Board board = new Board();
+        board.board = board.newBoard();
+        ChessController controller = new ChessController();
+        controller.setButtons();
+        //controller.draw(board.drawBoard());
     }
     public Game getGame() {
         return this.game;
