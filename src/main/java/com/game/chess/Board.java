@@ -44,9 +44,9 @@ public class Board {
         addPiece(row, 6, team.knightsList.get(1));
         addPiece(row, 7, team.rooksList.get(1));
 
-        for (int i = 0; i < 8; i++) {
-            addPiece(row + 1, i, team.pawnsList.get(i));
-        }
+//        for (int i = 0; i < 8; i++) {
+//            addPiece(row, i, team.pawnsList.get(i));
+//        }
     }
     private void addPiece(int row, int col, Piece piece) {
         ArrayList<Piece> targetRow = board.get(row);

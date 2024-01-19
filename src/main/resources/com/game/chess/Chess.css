@@ -26,6 +26,7 @@
     -fx-min-height: 50;
     -fx-max-width: 50;
     -fx-max-height: 50;
+    -fx-background-size: 50px 50px;-fx-background-repeat: no-repeat;-fx-background-position: center;
 }
 
 

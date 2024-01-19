@@ -4,14 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class ChessController {
+    Game game = new Game();
     public Label errorSpot;
-    public GridPane chessBoard;
     @FXML
     private Button buttonA1, buttonB1, buttonC1, buttonD1, buttonE1, buttonF1, buttonG1, buttonH1,
             buttonA2, buttonB2, buttonC2, buttonD2, buttonE2, buttonF2, buttonG2, buttonH2,
@@ -25,30 +23,62 @@ public class ChessController {
 
     @FXML
     private void handleButtonClick(ActionEvent event) {
+        String imagePath = "-fx-background-image: url('file:src/main/resources/com/game/chess/piecePics/";
         if (event.getSource() instanceof Button clickedButton) {
             String buttonId = clickedButton.getId();
             System.out.println("Button Clicked: " + buttonId);
-            clickedButton.setStyle("-fx-background-image: url('file:src/main/resources/com/game/chess/piecePics/black-pawn.png');-fx-background-size: 50px 50px;-fx-background-repeat: no-repeat;-fx-background-position: center;");
+            clickedButton.setStyle(imagePath + "white-king.png');");
         }
     }
     @FXML
     public void restart() {
         System.out.println("Restart game");
         clearBoard();
-
+        game.initGame(game);
+        draw(game.board.board);
     }
     public void draw(ArrayList<ArrayList<Piece>> arrayLists) {
+        String imagePath = "-fx-background-image: url('file:src/main/resources/com/game/chess/piecePics/";
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 Piece piece = arrayLists.get(i).get(j);
-                if (piece.type.equals("Pawn")) {
-                    buttons.get(i).get(j).setStyle("-fx-background-image: url('file:src/main/resources/com/game/chess/piecePics/black-pawn.png');-fx-background-size: 50px 50px;-fx-background-repeat: no-repeat;-fx-background-position: center;");
+                if (piece.pieceTeam.equals(Piece.Team.BLACK)) {
+                    switch (piece.type) {
+                        case "Pawn" ->
+                                buttons.get(i).get(j).setStyle(imagePath + "black-pawn.png');");
+                        case "Rook" ->
+                                buttons.get(i).get(j).setStyle(imagePath + "black-rook.png');");
+                        case "Knight" ->
+                                buttons.get(i).get(j).setStyle(imagePath + "black-knight.png');");
+                        case "Bishop" ->
+                                buttons.get(i).get(j).setStyle(imagePath + "black-bishop.png');");
+                        case "Queen" ->
+                                buttons.get(i).get(j).setStyle(imagePath + "black-queen.png');");
+                        case "King" ->
+                                buttons.get(i).get(j).setStyle(imagePath + "black-king.png');");
+                    }
+                } else if (piece.pieceTeam.equals(Piece.Team.WHITE)) {
+                    switch (piece.type) {
+                        case "Pawn" ->
+                                buttons.get(i).get(j).setStyle(imagePath + "white-pawn.png');");
+                        case "Rook" ->
+                                buttons.get(i).get(j).setStyle(imagePath + "white-rook.png');");
+                        case "Knight" ->
+                                buttons.get(i).get(j).setStyle(imagePath + "white-knight.png');");
+                        case "Bishop" ->
+                                buttons.get(i).get(j).setStyle(imagePath + "white-bishop.png');");
+                        case "Queen" ->
+                                buttons.get(i).get(j).setStyle(imagePath + "white-queen.png');");
+                        case "King" ->
+                                buttons.get(i).get(j).setStyle(imagePath + "white-king.png');");
+                    }
+                } else {
+                    buttons.get(i).get(j).setStyle("-fx-background-image: null;");
                 }
             }
         }
     }
     public void setButtons() {
-        System.out.println("Set buttons");
         buttons = new ArrayList<>();
         buttons.add(createRow(buttonA1, buttonB1, buttonC1, buttonD1, buttonE1, buttonF1, buttonG1, buttonH1));
         buttons.add(createRow(buttonA2, buttonB2, buttonC2, buttonD2, buttonE2, buttonF2, buttonG2, buttonH2));

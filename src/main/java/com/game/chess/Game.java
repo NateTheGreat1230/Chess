@@ -1,19 +1,15 @@
 package com.game.chess;
 
-import java.util.ArrayList;
-
 public class Game {
     boolean isWhiteTurn = true;
     Game game;
-    private ChessController controller;  // Reference to the ChessController instance
+    Board board = new Board();
+    private ChessController controller;
 
     public Game(ChessController controller) {
         this.controller = controller;
     }
     public Game() {}
-//    public Game(Game game) {
-//        this.game = game;
-//    }
     public boolean isWhiteTurn() {
         return isWhiteTurn;
     }
@@ -26,9 +22,8 @@ public class Game {
     }
     public void initGame(Game game) {
         this.game = game;
-        Board board = new Board();
         board.board = board.newBoard();
-        System.out.println("Set buttons");
+        //System.out.println("Set buttons");
         controller.setButtons();
         //controller.draw(board.drawBoard());
     }

@@ -16,7 +16,7 @@
         </VBox>
     </top>
     <center>
-        <GridPane styleClass="wrapper" alignment="CENTER" fx:id="chessBoard">
+        <GridPane styleClass="wrapper" alignment="CENTER">
             <VBox styleClass="container">
                 <HBox>
                     <Button fx:id="buttonA1" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
