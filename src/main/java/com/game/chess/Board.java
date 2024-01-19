@@ -58,4 +58,9 @@ public class Board {
     public ArrayList<ArrayList<Piece>> getBoard() {
         return this.board;
     }
+    public Piece getPiece(Position position) {
+        int row = position.getRow();
+        int column = position.getColumn();
+        return board.get(row).get(column);
+    }
 }

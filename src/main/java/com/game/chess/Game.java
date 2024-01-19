@@ -1,18 +1,15 @@
 package com.game.chess;
 
 public class Game {
-    boolean isWhiteTurn = true;
-    Game game;
+    private boolean isWhiteTurn = true;
+    private Game game;
     Board board = new Board();
     ChessController controller;
-
     public Game(ChessController controller) {
         this.controller = controller;
     }
     public Game() {}
-    public boolean isWhiteTurn() {
-        return isWhiteTurn;
-    }
+    public boolean isWhiteTurn() {return isWhiteTurn;}
     public void changeTurn() {
         isWhiteTurn = !isWhiteTurn;
     }
@@ -22,12 +19,14 @@ public class Game {
     public void initGame(Game game) {
         this.game = game;
         setController(controller);
-        board.board = board.newBoard();
+        clearBoard();
         controller.draw(board.getBoard());
     }
-    public Game getGame() {
-        return this.game;
+    public void clearBoard() {
+        board.board = board.newBoard();
+        isWhiteTurn = true;
     }
+    public Game getGame() {return this.game;}
     public void turn(Team team) {
         game = game.getGame();
         if (game.isWhiteTurn) {

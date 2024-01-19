@@ -9,11 +9,16 @@ public class Pawn extends Piece {
     public Pawn(Team pieceTeam) {
         super(pieceTeam);
         type = "Pawn";
+        if (pieceTeam.equals(Team.WHITE)) {
+            imgPath = "file:src/main/resources/com/game/chess/piecePics/white-pawn.png";
+        } else {
+            imgPath = "file:src/main/resources/com/game/chess/piecePics/black-pawn.png";
+        }
     }
     @Override
     public ArrayList<Position> getValidMoves(Position current) {
         ArrayList<Position> possible = new ArrayList<>();
-        int direction = (pieceTeam == Team.WHITE) ? 1 : -1;
+        int direction = (pieceTeam == Team.WHITE) ? -1 : 1;
 
         possible.add(new Position(current.getRow() + direction, current.getColumn()));
 

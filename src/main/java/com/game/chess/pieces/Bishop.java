@@ -10,6 +10,11 @@ public class Bishop extends Piece {
     public Bishop(Team pieceTeam) {
         super(pieceTeam);
         type = "Bishop";
+        if (pieceTeam.equals(Team.WHITE)) {
+            imgPath = "file:src/main/resources/com/game/chess/piecePics/white-bishop.png";
+        } else {
+            imgPath = "file:src/main/resources/com/game/chess/piecePics/black-bishop.png";
+        }
     }
 
     @Override

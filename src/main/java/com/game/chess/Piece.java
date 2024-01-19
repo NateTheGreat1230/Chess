@@ -6,6 +6,7 @@ public class Piece {
     public enum Team {
         WHITE, BLACK, BLANK
     }
+    public String imgPath;
     protected final Team pieceTeam;
     public String type;
     public Piece(Team pieceTeam) {this.pieceTeam = pieceTeam;}

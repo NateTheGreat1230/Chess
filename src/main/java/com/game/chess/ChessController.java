@@ -1,6 +1,7 @@
 package com.game.chess;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,61 +23,59 @@ public class ChessController {
     private ArrayList<ArrayList<Button>> buttons;
     @FXML
     private void handleButtonClick(ActionEvent event) {
-        String imagePath = "-fx-background-image: url('file:src/main/resources/com/game/chess/piecePics/";
         if (event.getSource() instanceof Button clickedButton) {
             String buttonId = clickedButton.getId();
-            System.out.println("Button Clicked: " + buttonId);
-            clickedButton.setStyle(imagePath + "white-king.png');");
+            Position clicked = getPosition(buttonId);
+            Piece piece = game.board.getPiece(clicked);
+            if (game.isWhiteTurn() && piece.pieceTeam.equals(Piece.Team.WHITE) || !game.isWhiteTurn() && piece.pieceTeam.equals(Piece.Team.BLACK)) {
+                ArrayList<Position> moves = piece.getValidMoves(clicked);
+                for (Position position : moves) {
+                    Button button = getButton(position);
+                    button.setStyle("-fx-background-color: #f70707;");
+                    button.setOnAction((event2) -> {
+                        Button source = (Button) event2.getSource();
+                        Position selectedPosition = getPosition(source.getId());
+                        executeMove(clicked, selectedPosition, piece);
+                    });
+                }
+                errorSpot.setText("");
+            } else {
+                errorSpot.setText("Pick a different piece.");
+            }
         }
     }
     @FXML
     public void restart() {
-        System.out.println("Restart game");
         clearBoard();
         game.setController(this.game.controller);
-        game.initGame(game);
-        draw(game.game.board.board);
+        game.clearBoard();
+        draw(game.board.getBoard());
     }
     public void draw(ArrayList<ArrayList<Piece>> arrayLists) {
-        String imagePath = "-fx-background-image: url('file:src/main/resources/com/game/chess/piecePics/";
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 Piece piece = arrayLists.get(i).get(j);
-                if (piece.pieceTeam.equals(Piece.Team.BLACK)) {
-                    switch (piece.type) {
-                        case "Pawn" ->
-                                buttons.get(i).get(j).setStyle(imagePath + "black-pawn.png');");
-                        case "Rook" ->
-                                buttons.get(i).get(j).setStyle(imagePath + "black-rook.png');");
-                        case "Knight" ->
-                                buttons.get(i).get(j).setStyle(imagePath + "black-knight.png');");
-                        case "Bishop" ->
-                                buttons.get(i).get(j).setStyle(imagePath + "black-bishop.png');");
-                        case "Queen" ->
-                                buttons.get(i).get(j).setStyle(imagePath + "black-queen.png');");
-                        case "King" ->
-                                buttons.get(i).get(j).setStyle(imagePath + "black-king.png');");
-                    }
-                } else if (piece.pieceTeam.equals(Piece.Team.WHITE)) {
-                    switch (piece.type) {
-                        case "Pawn" ->
-                                buttons.get(i).get(j).setStyle(imagePath + "white-pawn.png');");
-                        case "Rook" ->
-                                buttons.get(i).get(j).setStyle(imagePath + "white-rook.png');");
-                        case "Knight" ->
-                                buttons.get(i).get(j).setStyle(imagePath + "white-knight.png');");
-                        case "Bishop" ->
-                                buttons.get(i).get(j).setStyle(imagePath + "white-bishop.png');");
-                        case "Queen" ->
-                                buttons.get(i).get(j).setStyle(imagePath + "white-queen.png');");
-                        case "King" ->
-                                buttons.get(i).get(j).setStyle(imagePath + "white-king.png');");
-                    }
-                } else {
+                if (piece.type.equals("Blank")) {
                     buttons.get(i).get(j).setStyle("-fx-background-image: null;");
+                } else {
+                    buttons.get(i).get(j).setStyle("-fx-background-image: url('" + piece.imgPath + "');");
                 }
             }
         }
+    }
+    private void executeMove(Position start, Position end, Piece piece) {
+        System.out.println(piece.type + " to "+ end.getRow()+"+"+end.getColumn());
+        game.changeTurn();
+        draw(game.board.getBoard());
+    }
+    public Position getPosition(String string) {
+        char columnChar = string.charAt(6);
+        int row = Integer.parseInt(string.substring(7));
+        int column = columnChar - 'A';
+        return new Position(row - 1, column);
+    }
+    public Button getButton(Position position) {
+        return buttons.get(position.getRow()).get(position.getColumn());
     }
     public void setButtons() {
         buttons = new ArrayList<>();

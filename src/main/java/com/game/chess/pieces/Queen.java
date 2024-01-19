@@ -10,6 +10,11 @@ public class Queen extends Piece {
     public Queen(Team pieceTeam) {
         super(pieceTeam);
         type = "Queen";
+        if (pieceTeam.equals(Team.WHITE)) {
+            imgPath = "file:src/main/resources/com/game/chess/piecePics/white-queen.png";
+        } else {
+            imgPath = "file:src/main/resources/com/game/chess/piecePics/black-queen.png";
+        }
     }
 
     @Override

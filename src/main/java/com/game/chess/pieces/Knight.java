@@ -10,6 +10,11 @@ public class Knight extends Piece {
     public Knight(Team pieceTeam) {
         super(pieceTeam);
         type = "Knight";
+        if (pieceTeam.equals(Team.WHITE)) {
+            imgPath = "file:src/main/resources/com/game/chess/piecePics/white-knight.png";
+        } else {
+            imgPath = "file:src/main/resources/com/game/chess/piecePics/black-knight.png";
+        }
     }
 
     @Override
