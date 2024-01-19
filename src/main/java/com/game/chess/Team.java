@@ -19,9 +19,12 @@ public class Team {
     ArrayList<Rook> rooksList = new ArrayList<>();
 
     public Team() {}
-    public void makeTeam(String team) {
-        Piece.Team teamEnum;
+    public Team(String team) {
         this.team = team;
+    }
+    public void makeTeam() {
+        Piece.Team teamEnum;
+        //this.team = team;
         if (team.equals("WHITE")) {
             teamEnum = Piece.Team.WHITE;
         } else {

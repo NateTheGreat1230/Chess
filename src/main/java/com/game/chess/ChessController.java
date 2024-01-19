@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class ChessController {
-    //ChessController() {}
     public Label errorSpot;
     public GridPane chessBoard;
     @FXML
@@ -22,7 +21,7 @@ public class ChessController {
             buttonA6, buttonB6, buttonC6, buttonD6, buttonE6, buttonF6, buttonG6, buttonH6,
             buttonA7, buttonB7, buttonC7, buttonD7, buttonE7, buttonF7, buttonG7, buttonH7,
             buttonA8, buttonB8, buttonC8, buttonD8, buttonE8, buttonF8, buttonG8, buttonH8;
-    ArrayList<ArrayList<Button>> buttons;
+    private ArrayList<ArrayList<Button>> buttons;
 
     @FXML
     private void handleButtonClick(ActionEvent event) {
@@ -35,6 +34,7 @@ public class ChessController {
     @FXML
     public void restart() {
         System.out.println("Restart game");
+        clearBoard();
 
     }
     public void draw(ArrayList<ArrayList<Piece>> arrayLists) {
@@ -48,6 +48,7 @@ public class ChessController {
         }
     }
     public void setButtons() {
+        System.out.println("Set buttons");
         buttons = new ArrayList<>();
         buttons.add(createRow(buttonA1, buttonB1, buttonC1, buttonD1, buttonE1, buttonF1, buttonG1, buttonH1));
         buttons.add(createRow(buttonA2, buttonB2, buttonC2, buttonD2, buttonE2, buttonF2, buttonG2, buttonH2));
@@ -59,15 +60,17 @@ public class ChessController {
         buttons.add(createRow(buttonA8, buttonB8, buttonC8, buttonD8, buttonE8, buttonF8, buttonG8, buttonH8));
     }
     private ArrayList<Button> createRow(Button... buttons) {
-        // Create a new ArrayList for each row
         ArrayList<Button> rowButtons = new ArrayList<>();
-
-        // Add buttons to the row
         Collections.addAll(rowButtons, buttons);
-
         return rowButtons;
     }
     public void clearBoard() {
-
+        if (buttons != null) {
+            for (ArrayList<Button> buttonArray : buttons) {
+                for (Button button : buttonArray) {
+                    button.setStyle("-fx-background-image: null;");
+                }
+            }
+        }
     }
 }

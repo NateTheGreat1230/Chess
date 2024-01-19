@@ -19,7 +19,8 @@ public class ChessApp extends Application {
         stage.setTitle("Chess Game");
         stage.setScene(scene);
         stage.show();
-        Game game = new Game();
+        ChessController controller = fxmlLoader.getController();
+        Game game = new Game(controller);
         game.initGame(game);
     }
     public static void main(String[] args) {launch();}
