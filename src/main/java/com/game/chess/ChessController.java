@@ -34,8 +34,9 @@ public class ChessController {
     public void restart() {
         System.out.println("Restart game");
         clearBoard();
+        game.setController(this.game.controller);
         game.initGame(game);
-        draw(game.board.board);
+        draw(game.game.board.board);
     }
     public void draw(ArrayList<ArrayList<Piece>> arrayLists) {
         String imagePath = "-fx-background-image: url('file:src/main/resources/com/game/chess/piecePics/";

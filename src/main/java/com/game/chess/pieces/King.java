@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class King extends Piece {
     public King(Team pieceTeam) {
-        // Call the superclass constructor to set the team
         super(pieceTeam);
         type = "King";
     }
@@ -29,7 +28,6 @@ public class King extends Piece {
             possible.add(new Position(newRow, newCol));
         }
 
-        // Remove invalid moves
         possible.removeIf(position -> position.getRow() < 0 || position.getRow() > 7 || position.getColumn() < 0 || position.getColumn() > 7);
 
         return possible;

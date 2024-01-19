@@ -15,19 +15,15 @@ public class Pawn extends Piece {
         ArrayList<Position> possible = new ArrayList<>();
         int direction = (pieceTeam == Team.WHITE) ? 1 : -1;
 
-        // Allow moving one step forward
         possible.add(new Position(current.getRow() + direction, current.getColumn()));
 
-        // Allow moving two steps forward on the first move
         if (current.getRow() == ((pieceTeam == Team.WHITE) ? 1 : 6)) {
             possible.add(new Position(current.getRow() + 2 * direction, current.getColumn()));
         }
 
-        // Allow capturing diagonally
         possible.add(new Position(current.getRow() + direction, current.getColumn() + 1));
         possible.add(new Position(current.getRow() + direction, current.getColumn() - 1));
 
-        // Remove invalid moves
         possible.removeIf(position -> position.getRow() < 0 || position.getRow() > 7 || position.getColumn() < 0 || position.getColumn() > 7);
 
         return possible;

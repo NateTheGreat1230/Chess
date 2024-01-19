@@ -3,16 +3,12 @@ package com.game.chess;
 import java.util.ArrayList;
 
 public class Piece {
-    // Add the Team enum here
     public enum Team {
-        WHITE, BLACK
+        WHITE, BLACK, BLANK
     }
-
-    // Add the team property and set it in the constructor
     protected final Team pieceTeam;
     public String type;
 
-    // Add a constructor to set the team
     public Piece(Team pieceTeam) {
         this.pieceTeam = pieceTeam;
     }

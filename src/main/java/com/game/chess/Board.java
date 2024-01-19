@@ -1,5 +1,7 @@
 package com.game.chess;
 
+import com.game.chess.pieces.Blank;
+
 import java.util.ArrayList;
 
 public class Board {
@@ -11,8 +13,6 @@ public class Board {
 
     public ArrayList<ArrayList<Piece>> newBoard() {
         board = new ArrayList<>();
-
-        // Initialize the board with null values
         for (int i = 0; i < 8; i++) {
             ArrayList<Piece> row = new ArrayList<>();
             for (int j = 0; j < 8; j++) {
@@ -21,15 +21,19 @@ public class Board {
             board.add(row);
         }
 
-        // Add white pieces
-        Team whiteTeam = new Team("WHITE");
-        whiteTeam.makeTeam();
-        addTeamToBoard(whiteTeam, 0);
-
-        // Add black pieces
         Team blackTeam = new Team("BLACK");
         blackTeam.makeTeam();
-        addTeamToBoard(blackTeam, 7);
+        addTeamToBoard(blackTeam, 0);
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 8; j++) {
+                addPiece(i+2,j,new Blank(Piece.Team.BLANK));
+            }
+        }
+
+        Team whiteTeam = new Team("WHITE");
+        whiteTeam.makeTeam();
+        addTeamToBoard(whiteTeam, 7);
 
         return board;
     }
@@ -44,9 +48,16 @@ public class Board {
         addPiece(row, 6, team.knightsList.get(1));
         addPiece(row, 7, team.rooksList.get(1));
 
-//        for (int i = 0; i < 8; i++) {
-//            addPiece(row, i, team.pawnsList.get(i));
-//        }
+        if (team.team.equals("WHITE")) {
+            for (int i = 0; i < 8; i++) {
+                addPiece(row-1, i, team.pawnsList.get(i));
+            }
+        } else if (team.team.equals("BLACK")){
+            for (int i = 0; i < 8; i++) {
+                addPiece(row+1, i, team.pawnsList.get(i));
+            }
+        }
+
     }
     private void addPiece(int row, int col, Piece piece) {
         ArrayList<Piece> targetRow = board.get(row);
