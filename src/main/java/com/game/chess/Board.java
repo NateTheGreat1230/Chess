@@ -1,12 +1,10 @@
 package com.game.chess;
 
 import com.game.chess.pieces.Blank;
-
 import java.util.ArrayList;
 
 public class Board {
     ArrayList<ArrayList<Piece>> board;
-
     public Board() {
         this.board = newBoard();
     }
@@ -20,24 +18,19 @@ public class Board {
             }
             board.add(row);
         }
-
         Team blackTeam = new Team("BLACK");
         blackTeam.makeTeam();
         addTeamToBoard(blackTeam, 0);
-
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 8; j++) {
                 addPiece(i+2,j,new Blank(Piece.Team.BLANK));
             }
         }
-
         Team whiteTeam = new Team("WHITE");
         whiteTeam.makeTeam();
         addTeamToBoard(whiteTeam, 7);
-
         return board;
     }
-
     private void addTeamToBoard(Team team, int row) {
         addPiece(row, 0, team.rooksList.getFirst());
         addPiece(row, 1, team.knightsList.getFirst());
@@ -57,16 +50,12 @@ public class Board {
                 addPiece(row+1, i, team.pawnsList.get(i));
             }
         }
-
     }
     private void addPiece(int row, int col, Piece piece) {
         ArrayList<Piece> targetRow = board.get(row);
         targetRow.set(col, piece);
     }
     public ArrayList<ArrayList<Piece>> getBoard() {
-        return this.board;
-    }
-    public ArrayList<ArrayList<Piece>> drawBoard() {
         return this.board;
     }
 }

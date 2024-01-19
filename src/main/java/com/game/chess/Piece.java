@@ -8,16 +8,7 @@ public class Piece {
     }
     protected final Team pieceTeam;
     public String type;
-
-    public Piece(Team pieceTeam) {
-        this.pieceTeam = pieceTeam;
-    }
-
-    public ArrayList<Position> getValidMoves(Position current) {
-        return new ArrayList<>();
-    }
-
-    public String getType() {
-        return "";
-    }
+    public Piece(Team pieceTeam) {this.pieceTeam = pieceTeam;}
+    public ArrayList<Position> getValidMoves(Position current) {return new ArrayList<>();}
+    public String getType() {return type;}
 }

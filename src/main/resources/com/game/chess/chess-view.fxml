@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
@@ -17,7 +16,7 @@
     </top>
     <center>
         <GridPane styleClass="wrapper" alignment="CENTER">
-            <VBox styleClass="container">
+            <VBox>
                 <HBox>
                     <Button fx:id="buttonA1" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
                     <Button fx:id="buttonB1" styleClass="chess-button, even" onAction="#handleButtonClick"/>
@@ -28,7 +27,6 @@
                     <Button fx:id="buttonG1" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
                     <Button fx:id="buttonH1" styleClass="chess-button, even" onAction="#handleButtonClick"/>
                 </HBox>
-
                 <HBox>
                     <Button fx:id="buttonA2" styleClass="chess-button, even" onAction="#handleButtonClick"/>
                     <Button fx:id="buttonB2" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
@@ -39,7 +37,6 @@
                     <Button fx:id="buttonG2" styleClass="chess-button, even" onAction="#handleButtonClick"/>
                     <Button fx:id="buttonH2" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
                 </HBox>
-
                 <HBox>
                     <Button fx:id="buttonA3" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
                     <Button fx:id="buttonB3" styleClass="chess-button, even" onAction="#handleButtonClick"/>
@@ -50,7 +47,6 @@
                     <Button fx:id="buttonG3" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
                     <Button fx:id="buttonH3" styleClass="chess-button, even" onAction="#handleButtonClick"/>
                 </HBox>
-
                 <HBox>
                     <Button fx:id="buttonA4" styleClass="chess-button, even" onAction="#handleButtonClick"/>
                     <Button fx:id="buttonB4" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
@@ -61,7 +57,6 @@
                     <Button fx:id="buttonG4" styleClass="chess-button, even" onAction="#handleButtonClick"/>
                     <Button fx:id="buttonH4" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
                 </HBox>
-
                 <HBox>
                     <Button fx:id="buttonA5" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
                     <Button fx:id="buttonB5" styleClass="chess-button, even" onAction="#handleButtonClick"/>
@@ -72,7 +67,6 @@
                     <Button fx:id="buttonG5" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
                     <Button fx:id="buttonH5" styleClass="chess-button, even" onAction="#handleButtonClick"/>
                 </HBox>
-
                 <HBox>
                     <Button fx:id="buttonA6" styleClass="chess-button, even" onAction="#handleButtonClick"/>
                     <Button fx:id="buttonB6" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
@@ -83,7 +77,6 @@
                     <Button fx:id="buttonG6" styleClass="chess-button, even" onAction="#handleButtonClick"/>
                     <Button fx:id="buttonH6" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
                 </HBox>
-
                 <HBox>
                     <Button fx:id="buttonA7" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
                     <Button fx:id="buttonB7" styleClass="chess-button, even" onAction="#handleButtonClick"/>
@@ -94,7 +87,6 @@
                     <Button fx:id="buttonG7" styleClass="chess-button, odd" onAction="#handleButtonClick"/>
                     <Button fx:id="buttonH7" styleClass="chess-button, even" onAction="#handleButtonClick"/>
                 </HBox>
-
                 <HBox>
                     <Button fx:id="buttonA8" styleClass="chess-button, even" onAction="#handleButtonClick"/>
                     <Button fx:id="buttonB8" styleClass="chess-button, odd" onAction="#handleButtonClick"/>

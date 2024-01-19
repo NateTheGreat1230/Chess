@@ -4,7 +4,6 @@
     -fx-border-box: box-sizing;
     -fx-font-family: "Poppins", sans-serif;
 }
-
 .body {
     -fx-background-color: linear-gradient(to bottom right, #8b3ce8, #371263);
 }
@@ -15,25 +14,19 @@
     -fx-max-width: 450;
     -fx-max-height: 450;
 }
-
-.container {
-    /*-fx-background-color: #f0d9b5; */
-}
-
 .chess-button {
     -fx-font-size: 16px;
     -fx-min-width: 50;
     -fx-min-height: 50;
     -fx-max-width: 50;
     -fx-max-height: 50;
-    -fx-background-size: 50px 50px;-fx-background-repeat: no-repeat;-fx-background-position: center;
+    -fx-background-size: 50px 50px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
 }
-
-
 .odd {
     -fx-background-color: #1b283d;
 }
-
 .even {
     -fx-background-color: #e1e3e6;
 }

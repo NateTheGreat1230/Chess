@@ -24,7 +24,6 @@ public class Team {
     }
     public void makeTeam() {
         Piece.Team teamEnum;
-        //this.team = team;
         if (team.equals("WHITE")) {
             teamEnum = Piece.Team.WHITE;
         } else {

@@ -20,7 +20,6 @@ public class ChessController {
             buttonA7, buttonB7, buttonC7, buttonD7, buttonE7, buttonF7, buttonG7, buttonH7,
             buttonA8, buttonB8, buttonC8, buttonD8, buttonE8, buttonF8, buttonG8, buttonH8;
     private ArrayList<ArrayList<Button>> buttons;
-
     @FXML
     private void handleButtonClick(ActionEvent event) {
         String imagePath = "-fx-background-image: url('file:src/main/resources/com/game/chess/piecePics/";

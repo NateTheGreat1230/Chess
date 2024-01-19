@@ -14,11 +14,7 @@ public class Game {
         return isWhiteTurn;
     }
     public void changeTurn() {
-        if (isWhiteTurn) {
-            isWhiteTurn = false;
-        } else {
-            isWhiteTurn = true;
-        }
+        isWhiteTurn = !isWhiteTurn;
     }
     public void setController(ChessController controller) {
         this.controller = controller;
@@ -27,7 +23,7 @@ public class Game {
         this.game = game;
         setController(controller);
         board.board = board.newBoard();
-        controller.draw(board.drawBoard());
+        controller.draw(board.getBoard());
     }
     public Game getGame() {
         return this.game;
