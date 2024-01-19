@@ -14,6 +14,11 @@ public class Position {
     public int getColumn() {
         return this.column;
     }
-    // Getter and setter methods...
+    public void setRow(int row) {
+        this.row = row;
+    }
+    public void setColumn(int column) {
+        this.column = column;
+    }
 }
 

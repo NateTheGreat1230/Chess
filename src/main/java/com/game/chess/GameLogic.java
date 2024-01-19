@@ -1,5 +1,5 @@
 package com.game.chess;
-import com.game.chess.Game;
+
 public class GameLogic {
     Game game = new Game();
 

@@ -20,30 +20,35 @@ public class Team {
 
     public Team() {}
     public void makeTeam(String team) {
+        Piece.Team teamEnum;
         this.team = team;
-
+        if (team.equals("WHITE")) {
+            teamEnum = Piece.Team.WHITE;
+        } else {
+            teamEnum = Piece.Team.BLACK;
+        }
         for (int i = 0; i < pawns; i++) {
-            Pawn pawn = new Pawn();
+            Pawn pawn = new Pawn(teamEnum);
             pawnsList.add(pawn);
         }
         for (int i = 0; i < rooks; i++) {
-            Rook rook = new Rook();
+            Rook rook = new Rook(teamEnum);
             rooksList.add(rook);
         }
         for (int i = 0; i < bishops; i++) {
-            Bishop bishop = new Bishop();
+            Bishop bishop = new Bishop(teamEnum);
             bishopsList.add(bishop);
         }
         for (int i = 0; i < kings; i++) {
-            King king = new King();
+            King king = new King(teamEnum);
             kingsList.add(king);
         }
         for (int i = 0; i < queens; i++) {
-            Queen queen = new Queen();
+            Queen queen = new Queen(teamEnum);
             queensList.add(queen);
         }
         for (int i = 0; i < knights; i++) {
-            Knight knight = new Knight();
+            Knight knight = new Knight(teamEnum);
             knightsList.add(knight);
         }
     }
