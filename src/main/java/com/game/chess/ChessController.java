@@ -32,7 +32,8 @@ public class ChessController {
             String buttonId = clickedButton.getId();
             Position clicked = getPosition(buttonId);
             Piece piece = game.board.getPiece(clicked);
-            if (game.isWhiteTurn() && piece.pieceTeam.equals(Piece.Team.WHITE) || !game.isWhiteTurn() && piece.pieceTeam.equals(Piece.Team.BLACK)) {
+            if (game.isWhiteTurn() && piece.pieceTeam.equals(Piece.Team.WHITE) ||
+                    !game.isWhiteTurn() && piece.pieceTeam.equals(Piece.Team.BLACK)) {
                 ArrayList<Position> moves = piece.getValidMoves(clicked, game.board);
                 if (piece.type.equals("King")) {
                     moves = game.checkKingMoves(piece, moves);
@@ -64,6 +65,7 @@ public class ChessController {
         game.clearBoard();
         draw(game.board.getBoard());
         setDefaultButtonListener();
+        errorSpot.setText("");
     }
     public void draw(ArrayList<ArrayList<Piece>> arrayLists) {
         for (int i = 0; i < 8; i++) {

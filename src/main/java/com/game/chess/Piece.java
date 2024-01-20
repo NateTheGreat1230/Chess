@@ -3,9 +3,7 @@ package com.game.chess;
 import java.util.ArrayList;
 
 public class Piece {
-    public enum Team {
-        WHITE, BLACK, BLANK
-    }
+    public enum Team {WHITE, BLACK, BLANK}
     public String imgPath;
     public final Team pieceTeam;
     public String type;

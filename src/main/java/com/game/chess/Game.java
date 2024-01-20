@@ -1,7 +1,6 @@
 package com.game.chess;
 
 import com.game.chess.pieces.Blank;
-
 import java.util.ArrayList;
 
 public class Game {

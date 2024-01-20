@@ -34,14 +34,6 @@ public class Queen extends Piece {
             possibleDn.add(new Position(current.getRow() - i, current.getColumn()));
             possibleR.add(new Position(current.getRow(), current.getColumn() + i));
             possibleL.add(new Position(current.getRow(), current.getColumn() - i));
-//            possible.add(new Position(current.getRow() + i, current.getColumn()));
-//            possible.add(new Position(current.getRow() - i, current.getColumn()));
-//            possible.add(new Position(current.getRow(), current.getColumn() + i));
-//            possible.add(new Position(current.getRow(), current.getColumn() - i));
-//            possible.add(new Position(current.getRow() + i, current.getColumn() + i));
-//            possible.add(new Position(current.getRow() + i, current.getColumn() - i));
-//            possible.add(new Position(current.getRow() - i, current.getColumn() + i));
-//            possible.add(new Position(current.getRow() - i, current.getColumn() - i));
         }
         possibleRU.removeIf(position -> position.getRow() < 0 || position.getRow() > 7 || position.getColumn() < 0 || position.getColumn() > 7);
         possibleLU.removeIf(position -> position.getRow() < 0 || position.getRow() > 7 || position.getColumn() < 0 || position.getColumn() > 7);
