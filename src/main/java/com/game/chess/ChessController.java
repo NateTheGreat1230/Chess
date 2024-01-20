@@ -22,6 +22,8 @@ public class ChessController {
     private ArrayList<ArrayList<Button>> buttons;
     @FXML
     private void handleButtonClick(ActionEvent event) {
+        draw(game.board.getBoard());
+        setDefaultButtonListener();
         if (event.getSource() instanceof Button clickedButton) {
             String buttonId = clickedButton.getId();
             Position clicked = getPosition(buttonId);
@@ -66,6 +68,14 @@ public class ChessController {
         game.takeTurn(piece, start, end);
         System.out.println(piece.type + " to "+ end.getRow()+"+"+end.getColumn());
         draw(game.board.getBoard());
+        setDefaultButtonListener();
+    }
+    private void setDefaultButtonListener() {
+        for (ArrayList<Button> buttonArray : buttons) {
+            for (Button button : buttonArray) {
+                button.setOnAction(this::handleButtonClick);
+            }
+        }
     }
     public Position getPosition(String string) {
         char columnChar = string.charAt(6);

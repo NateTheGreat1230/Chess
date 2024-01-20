@@ -4,7 +4,7 @@ import com.game.chess.pieces.Blank;
 import java.util.ArrayList;
 
 public class Board {
-    ArrayList<ArrayList<Piece>> board;
+    public ArrayList<ArrayList<Piece>> board;
     public Board() {
         this.board = newBoard();
     }
