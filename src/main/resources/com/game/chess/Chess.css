@@ -25,10 +25,10 @@
     -fx-background-position: center;
 }
 .odd {
-    -fx-background-color: #1b283d;
+    -fx-background-color: #e1e3e6;
 }
 .even {
-    -fx-background-color: #e1e3e6;
+    -fx-background-color: #1b283d;
 }
 .centerThis {
     -fx-alignment: center;

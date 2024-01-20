@@ -5,9 +5,7 @@ import java.util.ArrayList;
 
 public class Board {
     public ArrayList<ArrayList<Piece>> board;
-    public Board() {
-        this.board = newBoard();
-    }
+    public Board() {this.board = newBoard();}
 
     public ArrayList<ArrayList<Piece>> newBoard() {
         board = new ArrayList<>();

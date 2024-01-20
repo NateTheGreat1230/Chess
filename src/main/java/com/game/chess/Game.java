@@ -7,17 +7,11 @@ public class Game {
     private Game game;
     Board board = new Board();
     ChessController controller;
-    public Game(ChessController controller) {
-        this.controller = controller;
-    }
+    public Game(ChessController controller) {this.controller = controller;}
     public Game() {}
     public boolean isWhiteTurn() {return isWhiteTurn;}
-    public void changeTurn() {
-        isWhiteTurn = !isWhiteTurn;
-    }
-    public void setController(ChessController controller) {
-        this.controller = controller;
-    }
+    public void changeTurn() {isWhiteTurn = !isWhiteTurn;}
+    public void setController(ChessController controller) {this.controller = controller;}
     public void initGame(Game game) {
         this.game = game;
         setController(controller);
