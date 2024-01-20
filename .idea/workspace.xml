@@ -6,14 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="d94bc922-951f-45ad-ba41-bbfd2b081866" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/game/chess/ChessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/ChessController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/game/chess/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/game/chess/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/Bishop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/King.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/Knight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/Pawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/Queen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/Rook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/game/chess/Chess.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/game/chess/Chess.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/game/chess/chess-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/game/chess/chess-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -26,12 +26,15 @@ public class Game {
     public void takeTurn(Piece piece, Position start, Position end) {
         board.addPiece(start.getRow(), start.getColumn(), new Blank(Piece.Team.BLANK));
         board.addPiece(end.getRow(), end.getColumn(), piece);
-        if (checkMate(piece.pieceTeam)) {
-            System.out.println(piece.pieceTeam + " wins!");
-            //win screen
+        if (true) {
+            //showWin(piece.pieceTeam);
         } else {
             changeTurn();
         }
+    }
+    public boolean checkWin() {
+        //System.out.println("WIN");
+        return true;
     }
     public boolean checkMate(Piece.Team team) {
         Position kingPosition = findKingPosition(team);

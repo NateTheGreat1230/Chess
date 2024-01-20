@@ -1,9 +1,16 @@
 package com.game.chess;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.stage.Popup;
+import javafx.stage.Window;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -32,7 +39,12 @@ public class ChessController {
                 ArrayList<Position> moves = piece.getValidMoves(clicked, game.board);
                 for (Position position : moves) {
                     Button button = getButton(position);
-                    button.setStyle("-fx-background-color: #f70707;");
+                    String image = button.getStyle();
+                    if (button.getStyleClass().get(2).equals("even")) {
+                        button.setStyle("-fx-background-color: #501c8c;" + image);
+                    } else {
+                        button.setStyle("-fx-background-color: #8e53d4;" + image);
+                    }
                     button.setOnAction((event2) -> {
                         Button source = (Button) event2.getSource();
                         Position selectedPosition = getPosition(source.getId());
@@ -51,6 +63,7 @@ public class ChessController {
         game.setController(this.game.controller);
         game.clearBoard();
         draw(game.board.getBoard());
+        setDefaultButtonListener();
     }
     public void draw(ArrayList<ArrayList<Piece>> arrayLists) {
         for (int i = 0; i < 8; i++) {
@@ -64,11 +77,51 @@ public class ChessController {
             }
         }
     }
+    public void showWin(Piece.Team team) {
+        Label label;
+        if (team.equals(Piece.Team.WHITE)) {
+            label = new Label("White team wins!");
+        } else {
+            label = new Label("Black team wins!");
+        }
+        Popup popup = new Popup();
+        VBox vbox = new VBox();
+        Button button = new Button("Play Again");
+        Button button1 = new Button("Close");
+        button.getStyleClass().addAll("win-button");
+        button1.getStyleClass().addAll("win-button");
+        label.getStyleClass().addAll("win-label");
+        vbox.getStyleClass().addAll("win-screen");
+        vbox.getChildren().add(label);
+        vbox.getChildren().add(button);
+        vbox.getChildren().add(button1);
+        popup.getContent().add(vbox);
+        label.setMinWidth(200);
+        label.setAlignment(Pos.CENTER);
+        label.setMinHeight(50);
+        Window window = errorSpot.getScene().getWindow();
+        popup.show(window);
+        button.setOnMouseClicked(mouseEvent -> {
+            restart();
+            popup.hide();
+        });
+        button1.setOnMouseClicked(mouseEvent -> popup.hide());
+    }
     private void executeMove(Position start, Position end, Piece piece) {
         game.takeTurn(piece, start, end);
-        System.out.println(piece.type + " to "+ end.getRow()+"+"+end.getColumn());
         draw(game.board.getBoard());
         setDefaultButtonListener();
+        if (game.checkWin()) {
+            freezeBoard();
+            showWin(piece.pieceTeam);
+        }
+    }
+    private void freezeBoard() {
+        for (ArrayList<Button> buttonArray : buttons) {
+            for (Button button : buttonArray) {
+                button.setOnAction(null);
+            }
+        }
     }
     private void setDefaultButtonListener() {
         for (ArrayList<Button> buttonArray : buttons) {

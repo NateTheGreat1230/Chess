@@ -17,23 +17,60 @@ public class Rook extends Piece {
     }
     @Override
     public ArrayList<Position> getValidMoves(Position current, Board board) {
-        ArrayList<Position> possible = new ArrayList<>();
+        ArrayList<Position> possibleUp = new ArrayList<>();
+        ArrayList<Position> possibleDn = new ArrayList<>();
+        ArrayList<Position> possibleR = new ArrayList<>();
+        ArrayList<Position> possibleL = new ArrayList<>();
         for (int i = 1; i <= 7; i++) {
-            possible.add(new Position(current.getRow() + i, current.getColumn()));
-            possible.add(new Position(current.getRow() - i, current.getColumn()));
-            possible.add(new Position(current.getRow(), current.getColumn() + i));
-            possible.add(new Position(current.getRow(), current.getColumn() - i));
+            possibleUp.add(new Position(current.getRow() + i, current.getColumn()));
+            possibleDn.add(new Position(current.getRow() - i, current.getColumn()));
+            possibleR.add(new Position(current.getRow(), current.getColumn() + i));
+            possibleL.add(new Position(current.getRow(), current.getColumn() - i));
         }
-        possible.removeIf(position -> position.getRow() < 0 || position.getRow() > 7 || position.getColumn() < 0 || position.getColumn() > 7);
+        possibleUp.removeIf(position -> position.getRow() < 0 || position.getRow() > 7 || position.getColumn() < 0 || position.getColumn() > 7);
+        possibleDn.removeIf(position -> position.getRow() < 0 || position.getRow() > 7 || position.getColumn() < 0 || position.getColumn() > 7);
+        possibleR.removeIf(position -> position.getRow() < 0 || position.getRow() > 7 || position.getColumn() < 0 || position.getColumn() > 7);
+        possibleL.removeIf(position -> position.getRow() < 0 || position.getRow() > 7 || position.getColumn() < 0 || position.getColumn() > 7);
         ArrayList<Position> valid = new ArrayList<>();
-        for (Position position : possible) {
-            Piece piece = board.getPiece(position);
-            if (piece.pieceTeam.equals(Team.BLANK)) {
-                valid.add(position);
-            } else if (!piece.pieceTeam.equals(this.pieceTeam)) {
-                valid.add(position);
+        for (Position position : possibleUp) {
+            Position temp = checkDirection(position, board);
+            if (temp != null) {
+                valid.add(temp);
+            }
+//            if (piece.pieceTeam.equals(Team.BLANK)) {
+//                valid.add(position);
+//            } else if (!piece.pieceTeam.equals(this.pieceTeam)) {
+//                valid.add(position);
+//            }
+        }
+        for (Position position : possibleDn) {
+            Position temp = checkDirection(position, board);
+            if (temp != null) {
+                valid.add(temp);
+            }
+        }
+        for (Position position : possibleR) {
+            Position temp = checkDirection(position, board);
+            if (temp != null) {
+                valid.add(temp);
+            }
+        }
+        for (Position position : possibleL) {
+            Position temp = checkDirection(position, board);
+            if (temp != null) {
+                valid.add(temp);
             }
         }
         return valid;
+    }
+    private Position checkDirection(Position position, Board board) {
+        Piece piece = board.getPiece(position);
+        if (piece.pieceTeam.equals(this.pieceTeam)) {
+            return null;
+        }
+        if (!piece.pieceTeam.equals(Team.BLANK)) {
+            return position;
+        }
+        return position;
     }
 }

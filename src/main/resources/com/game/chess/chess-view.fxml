@@ -11,7 +11,7 @@
         <VBox styleClass="centerThis">
             <Text text="Chess" styleClass="title"/>
             <Label fx:id="errorSpot" styleClass="txtStyle"/>
-            <Button text="  Restart  " onAction="#restart" styleClass="win-button"/>
+            <Button text="  Restart  " onAction="#restart" styleClass="reset-button"/>
         </VBox>
     </top>
     <center>

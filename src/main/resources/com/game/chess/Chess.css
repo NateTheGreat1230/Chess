@@ -45,9 +45,29 @@
     -fx-min-height: 1.7em;
     -fx-alignment: center;
 }
-.win-button {
+.reset-button {
     -fx-font-size: 1.2em;
-    -fx-background-color: #538d4eff;
+    -fx-background-color: #0f151f;
     -fx-text-fill: #f8f8f8;
     -fx-border-radius: 2em;
+}
+.win-button {
+    -fx-font-size: 1.2em;
+    -fx-background-color: #501c8c;
+    -fx-text-fill: #f8f8f8;
+    -fx-border-radius: 2em;
+}
+.win-screen {
+    -fx-alignment: center;
+    -fx-padding: 10;
+    -fx-font-weight: 400;
+    -fx-position: relative;
+    -fx-background-color: #0f151f;
+    -fx-background-radius: 10;
+    /*-fx-border-color: white;*/
+    -fx-spacing: 10;
+}
+.win-label {
+    -fx-text-fill: #f8f8f8;
+    -fx-font-size: 1.2em;
 }
