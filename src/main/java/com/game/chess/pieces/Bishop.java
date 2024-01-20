@@ -17,14 +17,23 @@ public class Bishop extends Piece {
     }
     @Override
     public ArrayList<Position> getValidMoves(Position current, Board board) {
-        ArrayList<Position> validMoves = new ArrayList<>();
+        ArrayList<Position> possible = new ArrayList<>();
         for (int i = 1; i <= 7; i++) {
-            validMoves.add(new Position(current.getRow() + i, current.getColumn() + i));
-            validMoves.add(new Position(current.getRow() + i, current.getColumn() - i));
-            validMoves.add(new Position(current.getRow() - i, current.getColumn() + i));
-            validMoves.add(new Position(current.getRow() - i, current.getColumn() - i));
+            possible.add(new Position(current.getRow() + i, current.getColumn() + i));
+            possible.add(new Position(current.getRow() + i, current.getColumn() - i));
+            possible.add(new Position(current.getRow() - i, current.getColumn() + i));
+            possible.add(new Position(current.getRow() - i, current.getColumn() - i));
         }
-        validMoves.removeIf(position -> position.getRow() < 0 || position.getRow() > 7 || position.getColumn() < 0 || position.getColumn() > 7);
-        return validMoves;
+        possible.removeIf(position -> position.getRow() < 0 || position.getRow() > 7 || position.getColumn() < 0 || position.getColumn() > 7);
+        ArrayList<Position> valid = new ArrayList<>();
+        for (Position position : possible) {
+            Piece piece = board.getPiece(position);
+            if (piece.pieceTeam.equals(Team.BLANK)) {
+                valid.add(position);
+            } else if (!piece.pieceTeam.equals(this.pieceTeam)) {
+                valid.add(position);
+            }
+        }
+        return valid;
     }
 }

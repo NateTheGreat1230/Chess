@@ -27,6 +27,7 @@ public class Game {
         board.addPiece(start.getRow(), start.getColumn(), new Blank(Piece.Team.BLANK));
         board.addPiece(end.getRow(), end.getColumn(), piece);
         if (checkMate(piece.pieceTeam)) {
+            System.out.println(piece.pieceTeam + " wins!");
             //win screen
         } else {
             changeTurn();
@@ -45,19 +46,15 @@ public class Game {
                 }
             }
         }
-
-        return false; // King is not in check
+        return false;
     }
-
     private Position findKingPosition(Piece.Team team) {
-        // Iterate through the board to find the position of the king of the specified team
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 Position currentPos = new Position(row, col);
                 Piece currentPiece = board.getPiece(currentPos);
-
                 if (currentPiece != null && currentPiece.type.equals("King") && currentPiece.pieceTeam.equals(team)) {
-                    return currentPos; // Found the king's position
+                    return currentPos;
                 }
             }
         }

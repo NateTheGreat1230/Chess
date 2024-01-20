@@ -25,7 +25,15 @@ public class King extends Piece {
             possible.add(new Position(newRow, newCol));
         }
         possible.removeIf(position -> position.getRow() < 0 || position.getRow() > 7 || position.getColumn() < 0 || position.getColumn() > 7);
-        return possible;
+        ArrayList<Position> valid = new ArrayList<>();
+        for (Position position : possible) {
+            Piece piece = board.getPiece(position);
+            if (piece.pieceTeam.equals(Team.BLANK)) {
+                valid.add(position);
+            } else if (!piece.pieceTeam.equals(this.pieceTeam)) {
+                valid.add(position);
+            }
+        }
+        return valid;
     }
-
 }

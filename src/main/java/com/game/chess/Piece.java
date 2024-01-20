@@ -7,7 +7,7 @@ public class Piece {
         WHITE, BLACK, BLANK
     }
     public String imgPath;
-    protected final Team pieceTeam;
+    public final Team pieceTeam;
     public String type;
     public Piece(Team pieceTeam) {this.pieceTeam = pieceTeam;}
     public ArrayList<Position> getValidMoves(Position current, Board board) {return new ArrayList<>();}
