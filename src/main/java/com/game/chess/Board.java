@@ -51,7 +51,7 @@ public class Board {
             }
         }
     }
-    private void addPiece(int row, int col, Piece piece) {
+    void addPiece(int row, int col, Piece piece) {
         ArrayList<Piece> targetRow = board.get(row);
         targetRow.set(col, piece);
     }

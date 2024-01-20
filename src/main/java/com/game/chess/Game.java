@@ -1,5 +1,7 @@
 package com.game.chess;
 
+import com.game.chess.pieces.Blank;
+
 public class Game {
     private boolean isWhiteTurn = true;
     private Game game;
@@ -36,5 +38,10 @@ public class Game {
             System.out.println("Black Turn");
             game.changeTurn();
         }
+    }
+    public void takeTurn(Piece piece, Position start, Position end) {
+        board.addPiece(start.getRow(), start.getColumn(), new Blank(Piece.Team.BLANK));
+        board.addPiece(end.getRow(), end.getColumn(), piece);
+        changeTurn();
     }
 }

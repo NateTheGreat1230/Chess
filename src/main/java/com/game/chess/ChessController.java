@@ -1,7 +1,6 @@
 package com.game.chess;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -64,8 +63,8 @@ public class ChessController {
         }
     }
     private void executeMove(Position start, Position end, Piece piece) {
+        game.takeTurn(piece, start, end);
         System.out.println(piece.type + " to "+ end.getRow()+"+"+end.getColumn());
-        game.changeTurn();
         draw(game.board.getBoard());
     }
     public Position getPosition(String string) {
