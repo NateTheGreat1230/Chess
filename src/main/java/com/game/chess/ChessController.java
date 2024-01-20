@@ -29,7 +29,7 @@ public class ChessController {
             Position clicked = getPosition(buttonId);
             Piece piece = game.board.getPiece(clicked);
             if (game.isWhiteTurn() && piece.pieceTeam.equals(Piece.Team.WHITE) || !game.isWhiteTurn() && piece.pieceTeam.equals(Piece.Team.BLACK)) {
-                ArrayList<Position> moves = piece.getValidMoves(clicked);
+                ArrayList<Position> moves = piece.getValidMoves(clicked, game.board);
                 for (Position position : moves) {
                     Button button = getButton(position);
                     button.setStyle("-fx-background-color: #f70707;");

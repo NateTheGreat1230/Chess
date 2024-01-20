@@ -23,19 +23,44 @@ public class Game {
         isWhiteTurn = true;
     }
     public Game getGame() {return this.game;}
-    public void turn(Team team) {
-        game = game.getGame();
-        if (game.isWhiteTurn) {
-            System.out.println("White Turn");
-            game.changeTurn();
-        } else {
-            System.out.println("Black Turn");
-            game.changeTurn();
-        }
-    }
     public void takeTurn(Piece piece, Position start, Position end) {
         board.addPiece(start.getRow(), start.getColumn(), new Blank(Piece.Team.BLANK));
         board.addPiece(end.getRow(), end.getColumn(), piece);
-        changeTurn();
+        if (checkMate(piece.pieceTeam)) {
+            //win screen
+        } else {
+            changeTurn();
+        }
+    }
+    public boolean checkMate(Piece.Team team) {
+        Position kingPosition = findKingPosition(team);
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                Position currentPos = new Position(row, col);
+                Piece currentPiece = board.getPiece(currentPos);
+                if (currentPiece != null && !currentPiece.pieceTeam.equals(team)) {
+                    if (currentPiece.isValidMove(currentPos, kingPosition, board)) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false; // King is not in check
+    }
+
+    private Position findKingPosition(Piece.Team team) {
+        // Iterate through the board to find the position of the king of the specified team
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                Position currentPos = new Position(row, col);
+                Piece currentPiece = board.getPiece(currentPos);
+
+                if (currentPiece != null && currentPiece.type.equals("King") && currentPiece.pieceTeam.equals(team)) {
+                    return currentPos; // Found the king's position
+                }
+            }
+        }
+        return null;
     }
 }

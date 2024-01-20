@@ -1,5 +1,6 @@
 package com.game.chess.pieces;
 
+import com.game.chess.Board;
 import com.game.chess.Piece;
 import com.game.chess.Position;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class Bishop extends Piece {
         }
     }
     @Override
-    public ArrayList<Position> getValidMoves(Position current) {
+    public ArrayList<Position> getValidMoves(Position current, Board board) {
         ArrayList<Position> validMoves = new ArrayList<>();
         for (int i = 1; i <= 7; i++) {
             validMoves.add(new Position(current.getRow() + i, current.getColumn() + i));

@@ -1,5 +1,6 @@
 package com.game.chess.pieces;
 
+import com.game.chess.Board;
 import com.game.chess.Piece;
 import com.game.chess.Position;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class King extends Piece {
         }
     }
     @Override
-    public ArrayList<Position> getValidMoves(Position current) {
+    public ArrayList<Position> getValidMoves(Position current, Board board) {
         ArrayList<Position> possible = new ArrayList<>();
         int[][] moves = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
         for (int[] move : moves) {
@@ -26,4 +27,5 @@ public class King extends Piece {
         possible.removeIf(position -> position.getRow() < 0 || position.getRow() > 7 || position.getColumn() < 0 || position.getColumn() > 7);
         return possible;
     }
+
 }

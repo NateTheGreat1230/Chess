@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class Board {
     public ArrayList<ArrayList<Piece>> board;
     public Board() {this.board = newBoard();}
-
     public ArrayList<ArrayList<Piece>> newBoard() {
         board = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
@@ -38,7 +37,6 @@ public class Board {
         addPiece(row, 5, team.bishopsList.get(1));
         addPiece(row, 6, team.knightsList.get(1));
         addPiece(row, 7, team.rooksList.get(1));
-
         if (team.team.equals("WHITE")) {
             for (int i = 0; i < 8; i++) {
                 addPiece(row-1, i, team.pawnsList.get(i));

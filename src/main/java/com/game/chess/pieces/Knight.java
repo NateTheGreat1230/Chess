@@ -1,5 +1,6 @@
 package com.game.chess.pieces;
 
+import com.game.chess.Board;
 import com.game.chess.Piece;
 import com.game.chess.Position;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class Knight extends Piece {
         }
     }
     @Override
-    public ArrayList<Position> getValidMoves(Position current) {
+    public ArrayList<Position> getValidMoves(Position current, Board board) {
         ArrayList<Position> possible = new ArrayList<>();
         int[][] moves = {{-2, -1}, {-2, 1}, {-1, -2}, {-1, 2}, {1, -2}, {1, 2}, {2, -1}, {2, 1}};
         for (int[] move : moves) {

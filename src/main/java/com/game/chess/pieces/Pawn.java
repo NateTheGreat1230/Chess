@@ -1,5 +1,6 @@
 package com.game.chess.pieces;
 
+import com.game.chess.Board;
 import com.game.chess.Piece;
 import com.game.chess.Position;
 
@@ -16,7 +17,7 @@ public class Pawn extends Piece {
         }
     }
     @Override
-    public ArrayList<Position> getValidMoves(Position current) {
+    public ArrayList<Position> getValidMoves(Position current, Board board) {
         ArrayList<Position> possible = new ArrayList<>();
         int direction = (pieceTeam == Team.WHITE) ? -1 : 1;
         possible.add(new Position(current.getRow() + direction, current.getColumn()));
