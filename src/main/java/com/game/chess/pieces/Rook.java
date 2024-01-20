@@ -33,44 +33,59 @@ public class Rook extends Piece {
         possibleL.removeIf(position -> position.getRow() < 0 || position.getRow() > 7 || position.getColumn() < 0 || position.getColumn() > 7);
         ArrayList<Position> valid = new ArrayList<>();
         for (Position position : possibleUp) {
-            Position temp = checkDirection(position, board);
-            if (temp != null) {
-                valid.add(temp);
+            String temp = checkDirection(position, board);
+            if (temp == null) {
+                valid.add(position);
+            } else if (temp.equals("Opposite")){
+                valid.add(position);
+                break;
+            } else {
+                break;
             }
-//            if (piece.pieceTeam.equals(Team.BLANK)) {
-//                valid.add(position);
-//            } else if (!piece.pieceTeam.equals(this.pieceTeam)) {
-//                valid.add(position);
-//            }
         }
         for (Position position : possibleDn) {
-            Position temp = checkDirection(position, board);
-            if (temp != null) {
-                valid.add(temp);
+            String temp = checkDirection(position, board);
+            if (temp == null) {
+                valid.add(position);
+            } else if (temp.equals("Opposite")){
+                valid.add(position);
+                break;
+            } else {
+                break;
             }
         }
         for (Position position : possibleR) {
-            Position temp = checkDirection(position, board);
-            if (temp != null) {
-                valid.add(temp);
+            String temp = checkDirection(position, board);
+            if (temp == null) {
+                valid.add(position);
+            } else if (temp.equals("Opposite")){
+                valid.add(position);
+                break;
+            } else {
+                break;
             }
         }
         for (Position position : possibleL) {
-            Position temp = checkDirection(position, board);
-            if (temp != null) {
-                valid.add(temp);
+            String temp = checkDirection(position, board);
+            if (temp == null) {
+                valid.add(position);
+            } else if (temp.equals("Opposite")){
+                valid.add(position);
+                break;
+            } else {
+                break;
             }
         }
         return valid;
     }
-    private Position checkDirection(Position position, Board board) {
+    private String checkDirection(Position position, Board board) {
         Piece piece = board.getPiece(position);
         if (piece.pieceTeam.equals(this.pieceTeam)) {
+            return "Same";
+        } else if (piece.pieceTeam.equals(Team.BLANK)) {
             return null;
+        } else {
+            return "Opposite";
         }
-        if (!piece.pieceTeam.equals(Team.BLANK)) {
-            return position;
-        }
-        return position;
     }
 }
