@@ -34,6 +34,9 @@ public class ChessController {
             Piece piece = game.board.getPiece(clicked);
             if (game.isWhiteTurn() && piece.pieceTeam.equals(Piece.Team.WHITE) || !game.isWhiteTurn() && piece.pieceTeam.equals(Piece.Team.BLACK)) {
                 ArrayList<Position> moves = piece.getValidMoves(clicked, game.board);
+                if (piece.type.equals("King")) {
+                    moves = game.checkKingMoves(piece, moves);
+                }
                 for (Position position : moves) {
                     Button button = getButton(position);
                     String image = button.getStyle();
@@ -113,6 +116,10 @@ public class ChessController {
             showWin(piece.pieceTeam);
         }
         game.changeTurn();
+        Piece.Team team = game.getTurn();
+        if (game.kingInCheck(team, game.findKingPosition(team))) {
+            errorSpot.setText("Your in Check");
+        }
     }
     private void freezeBoard() {
         for (ArrayList<Button> buttonArray : buttons) {

@@ -51,24 +51,14 @@ public class Game {
         if (kingPosition == null) {
             return true;
         }
-        ArrayList<Piece> enemies;
-        if (!team.equals(Piece.Team.WHITE)) {
-            enemies = board.whiteTeamList;
-        } else {
-            enemies = board.blackTeamList;
-        }
-        for (Piece enemy : enemies) {
-            if (enemy.isValidMove(board.getPiecePosition(enemy), kingPosition, board)) {
-                System.out.println("Check");
-                if (board.getPiece(kingPosition).getValidMoves(kingPosition, board).equals(new ArrayList<>())) {
-                    System.out.println("Check mate");
-                    return true;
-                }
-            }
+        if (kingInCheck(team, kingPosition)) {
+            Piece king = board.getPiece(kingPosition);
+            ArrayList<Position> moves = checkKingMoves(king, king.getValidMoves(kingPosition, board));
+            return moves.equals(new ArrayList<>());
         }
         return false;
     }
-    private Position findKingPosition(Piece.Team team) {
+    public Position findKingPosition(Piece.Team team) {
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 Position currentPos = new Position(row, col);
@@ -79,5 +69,38 @@ public class Game {
             }
         }
         return null;
+    }
+    public ArrayList<Position> checkKingMoves(Piece king, ArrayList<Position> moves) {
+        ArrayList<Position> checkedMoves = new ArrayList<>();
+        for (Position move : moves) {
+            if (!kingInCheck(king.pieceTeam, move)) {
+                checkedMoves.add(move);
+            }
+        }
+        return checkedMoves;
+    }
+    public boolean kingInCheck(Piece.Team team, Position kingPosition) {
+        if (kingPosition == null) {
+            return true;
+        }
+        ArrayList<Piece> enemies;
+        if (!team.equals(Piece.Team.WHITE)) {
+            enemies = board.whiteTeamList;
+        } else {
+            enemies = board.blackTeamList;
+        }
+        for (Piece enemy : enemies) {
+            if (enemy.isValidMove(board.getPiecePosition(enemy), kingPosition, board)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public Piece.Team getTurn() {
+        if (isWhiteTurn()) {
+            return Piece.Team.WHITE;
+        } else {
+            return Piece.Team.BLACK;
+        }
     }
 }
