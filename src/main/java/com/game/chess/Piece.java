@@ -14,7 +14,7 @@ public class Piece {
     public boolean isValidMove(Position from, Position to, Board board){
         ArrayList<Position> moves = getValidMoves(from, board);
         for (Position position : moves) {
-            if (to.equals(position)) {
+            if (to.toString().equals(position.toString())) {
                 return true;
             }
         }

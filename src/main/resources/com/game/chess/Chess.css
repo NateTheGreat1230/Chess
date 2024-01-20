@@ -64,7 +64,6 @@
     -fx-position: relative;
     -fx-background-color: #0f151f;
     -fx-background-radius: 10;
-    /*-fx-border-color: white;*/
     -fx-spacing: 10;
 }
 .win-label {

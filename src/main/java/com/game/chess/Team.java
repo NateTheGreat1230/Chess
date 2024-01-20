@@ -17,11 +17,9 @@ public class Team {
     ArrayList<Queen> queensList = new ArrayList<>();
     ArrayList<Knight> knightsList = new ArrayList<>();
     ArrayList<Rook> rooksList = new ArrayList<>();
-
+    ArrayList<Piece> wholeTeam = new ArrayList<>();
     public Team() {}
-    public Team(String team) {
-        this.team = team;
-    }
+    public Team(String team) {this.team = team;}
     public void makeTeam() {
         Piece.Team teamEnum;
         if (team.equals("WHITE")) {
@@ -32,26 +30,32 @@ public class Team {
         for (int i = 0; i < pawns; i++) {
             Pawn pawn = new Pawn(teamEnum);
             pawnsList.add(pawn);
+            wholeTeam.add(pawn);
         }
         for (int i = 0; i < rooks; i++) {
             Rook rook = new Rook(teamEnum);
             rooksList.add(rook);
+            wholeTeam.add(rook);
         }
         for (int i = 0; i < bishops; i++) {
             Bishop bishop = new Bishop(teamEnum);
             bishopsList.add(bishop);
+            wholeTeam.add(bishop);
         }
         for (int i = 0; i < kings; i++) {
             King king = new King(teamEnum);
             kingsList.add(king);
+            wholeTeam.add(king);
         }
         for (int i = 0; i < queens; i++) {
             Queen queen = new Queen(teamEnum);
             queensList.add(queen);
+            wholeTeam.add(queen);
         }
         for (int i = 0; i < knights; i++) {
             Knight knight = new Knight(teamEnum);
             knightsList.add(knight);
+            wholeTeam.add(knight);
         }
     }
 }

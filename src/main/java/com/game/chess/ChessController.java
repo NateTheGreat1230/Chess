@@ -1,16 +1,13 @@
 package com.game.chess;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Window;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -115,6 +112,7 @@ public class ChessController {
             freezeBoard();
             showWin(piece.pieceTeam);
         }
+        game.changeTurn();
     }
     private void freezeBoard() {
         for (ArrayList<Button> buttonArray : buttons) {
@@ -136,9 +134,7 @@ public class ChessController {
         int column = columnChar - 'A';
         return new Position(row - 1, column);
     }
-    public Button getButton(Position position) {
-        return buttons.get(position.getRow()).get(position.getColumn());
-    }
+    public Button getButton(Position position) {return buttons.get(position.getRow()).get(position.getColumn());}
     public void setButtons() {
         buttons = new ArrayList<>();
         buttons.add(createRow(buttonA1, buttonB1, buttonC1, buttonD1, buttonE1, buttonF1, buttonG1, buttonH1));

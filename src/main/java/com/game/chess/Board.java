@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class Board {
     public ArrayList<ArrayList<Piece>> board;
+    public ArrayList<Piece> blackTeamList = new ArrayList<>();
+    public ArrayList<Piece> whiteTeamList = new ArrayList<>();
     public Board() {this.board = newBoard();}
     public ArrayList<ArrayList<Piece>> newBoard() {
         board = new ArrayList<>();
@@ -16,6 +18,7 @@ public class Board {
             board.add(row);
         }
         Team blackTeam = new Team("BLACK");
+        blackTeamList = blackTeam.wholeTeam;
         blackTeam.makeTeam();
         addTeamToBoard(blackTeam, 0);
         for (int i = 0; i < 4; i++) {
@@ -24,6 +27,7 @@ public class Board {
             }
         }
         Team whiteTeam = new Team("WHITE");
+        whiteTeamList = whiteTeam.wholeTeam;
         whiteTeam.makeTeam();
         addTeamToBoard(whiteTeam, 7);
         return board;
@@ -46,6 +50,16 @@ public class Board {
                 addPiece(row+1, i, team.pawnsList.get(i));
             }
         }
+    }
+    public Position getPiecePosition(Piece piece) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (board.get(i).get(j).equals(piece)) {
+                    return new Position(i, j);
+                }
+            }
+        }
+        return null;
     }
     void addPiece(int row, int col, Piece piece) {
         ArrayList<Piece> targetRow = board.get(row);

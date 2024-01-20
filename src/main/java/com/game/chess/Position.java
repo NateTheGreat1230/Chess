@@ -12,4 +12,5 @@ public class Position {
     public int getColumn() {return this.column;}
     public void setRow(int row) {this.row = row;}
     public void setColumn(int column) {this.column = column;}
+    public String toString() {return "Row: " + this.row + " Column: " + this.column;}
 }
