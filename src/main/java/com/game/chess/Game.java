@@ -36,7 +36,6 @@ public class Game {
         }
         board.addPiece(start.getRow(), start.getColumn(), new Blank(Piece.Team.BLANK));
         board.addPiece(end.getRow(), end.getColumn(), piece);
-        //changeTurn();
     }
     public boolean checkWin() {
         if (!isWhiteTurn()) {
@@ -44,6 +43,58 @@ public class Game {
         } else {
             return checkMate(Piece.Team.BLACK);
         }
+    }
+    public ArrayList<Position> checkMoves(Piece piece, ArrayList<Position> allMoves) {
+        ArrayList<Position> inCheckMoves = new ArrayList<>();
+        for (Position position : allMoves) {
+            if (preventsCheck(position, piece) || canCaptureAttacker(position, piece)) {
+                inCheckMoves.add(position);
+            }
+        }
+        return inCheckMoves;
+    }
+    public boolean preventsCheck(Position position, Piece piece) {
+        ArrayList<Piece> enemies;
+        if (piece.pieceTeam.equals(Piece.Team.WHITE)) {
+            enemies = board.blackTeamList;
+        } else {
+            enemies = board.whiteTeamList;
+        }
+        Position kingPosition = findKingPosition(piece.pieceTeam);
+        for (Piece enemy : enemies) {
+            Position enemyPosition = board.getPiecePosition(enemy);
+            if (enemy.isValidMove(enemyPosition, kingPosition, board) &&
+                    isBetween(position, kingPosition, enemyPosition)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    private boolean isBetween(Position position, Position start, Position end) {
+        int deltaX1 = position.getColumn() - start.getColumn();
+        int deltaY1 = position.getRow() - start.getRow();
+        int deltaX2 = end.getColumn() - start.getColumn();
+        int deltaY2 = end.getRow() - start.getRow();
+        return deltaX1 * deltaY2 == deltaX2 * deltaY1 &&
+                Math.min(start.getColumn(), end.getColumn()) <= position.getColumn() &&
+                position.getColumn() <= Math.max(start.getColumn(), end.getColumn()) &&
+                Math.min(start.getRow(), end.getRow()) <= position.getRow() &&
+                position.getRow() <= Math.max(start.getRow(), end.getRow());
+    }
+    private boolean canCaptureAttacker(Position position, Piece piece) {
+        ArrayList<Piece> enemies;
+        if (piece.pieceTeam.equals(Piece.Team.WHITE)) {
+            enemies = board.blackTeamList;
+        } else {
+            enemies = board.whiteTeamList;
+        }
+        for (Piece enemy : enemies) {
+            if (enemy.isValidMove(board.getPiecePosition(enemy), position, board) &&
+                    position.equals(board.getPiecePosition(enemy))) {
+                return true;
+            }
+        }
+        return false;
     }
     public boolean checkMate(Piece.Team team) {
         Position kingPosition = findKingPosition(team);

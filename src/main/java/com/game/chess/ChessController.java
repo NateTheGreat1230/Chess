@@ -37,6 +37,8 @@ public class ChessController {
                 ArrayList<Position> moves = piece.getValidMoves(clicked, game.board);
                 if (piece.type.equals("King")) {
                     moves = game.checkKingMoves(piece, moves);
+                } else if (game.kingInCheck(piece.pieceTeam, game.findKingPosition(piece.pieceTeam))) {
+                    moves = game.checkMoves(piece, moves);
                 }
                 for (Position position : moves) {
                     Button button = getButton(position);
