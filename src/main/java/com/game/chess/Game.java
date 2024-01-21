@@ -45,9 +45,6 @@ public class Game {
     }
     public ArrayList<Position> putsInCheck(Piece piece, ArrayList<Position> moves) {
         ArrayList<Position> movesCopy = moves;
-        if (moves.equals(new ArrayList<>())) {
-            movesCopy = new ArrayList<>();
-        }
         if (causesCheck(piece)) {
             movesCopy = new ArrayList<>();
             Position kingSpot = findKingPosition(piece.pieceTeam, board);
@@ -56,12 +53,27 @@ public class Game {
                     if (kingAttacker(piece, kingSpot, board).toString().equals(temp.toString())) {
                         movesCopy.add(temp);
                     }
-                } else {
-                    System.out.println(kingSpot.toString()+"|"+temp.toString());
+//                    if (!moveCauseCheck(piece, temp)) {
+//                        movesCopy.add(temp);
+//                    }
                 }
             }
         }
         return movesCopy;
+    }
+    public boolean moveCauseCheck(Piece piece, Position temp) {
+        Position kingSpot = findKingPosition(piece.pieceTeam, board);
+        boolean result = false;
+        Position OGPosition = board.getPiecePosition(piece);
+        Piece OGPiece = board.getPiece(temp);
+        board.addPiece(OGPosition.getRow(), OGPosition.getColumn(), new Blank(Piece.Team.BLANK));
+        board.addPiece(temp.getRow(), temp.getColumn(), piece);
+        if (kingInCheck(piece.pieceTeam, kingSpot, board)) {
+            result = true;
+        }
+        board.addPiece(OGPosition.getRow(), OGPosition.getColumn(), piece);
+        board.addPiece(temp.getRow(), temp.getColumn(), OGPiece);
+        return result;
     }
     private boolean causesCheck(Piece piece) {
         Position OGPosition = board.getPiecePosition(piece);

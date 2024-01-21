@@ -35,7 +35,56 @@ public class Pawn extends Piece {
         if (isValidAttack(rightAttack, board)) {
             possible.add(rightAttack);
         }
+        if (promotion(current)) {
+            if (pieceTeam.equals(Team.WHITE)) {
+                board.whiteTeamList.remove(board.getPiece(current));
+                Queen queen = new Queen(pieceTeam);
+                board.addPiece(current.getRow(), current.getColumn(), queen);
+                board.whiteTeamList.add(queen);
+            } else {
+                board.blackTeamList.remove(board.getPiece(current));
+                Queen queen = new Queen(pieceTeam);
+                board.addPiece(current.getRow(), current.getColumn(), queen);
+                board.blackTeamList.add(queen);
+            }
+        }
+        if (!enPassant(current, board).equals("False")) {
+            if (enPassant(current, board).equals("Right")) {
+                possible.add(rightAttack);
+            } else {
+                possible.add(leftAttack);
+            }
+        }
         return possible;
+    }
+    private String enPassant(Position current, Board board) {
+        if (pieceTeam.equals(Team.WHITE)) {
+            if (current.getRow() == 5) {
+                if (board.getPiece(new Position(5, current.getColumn() - 1)).type.equals("Pawn")) {
+                    return "Left";
+                } else if (board.getPiece(new Position(5, current.getColumn() + 1)).type.equals("Pawn")) {
+                    return "Right";
+                }
+            }
+        } else {
+            if (current.getRow() == 4) {
+                if (board.getPiece(new Position(4, current.getColumn() - 1)).type.equals("Pawn")) {
+                    return "Left";
+                } else if (board.getPiece(new Position(4, current.getColumn() + 1)).type.equals("Pawn")) {
+                    return "Right";
+                }
+            }
+        }
+        return "False";
+    }
+    private boolean promotion(Position current) {
+        int row = current.getRow();
+        if (row == 0 && pieceTeam.equals(Team.WHITE)) {
+            return true;
+        } else if (row == 7 && pieceTeam.equals(Team.BLACK)) {
+            return true;
+        }
+        return false;
     }
     private boolean isValidMove(Position position, Board board) {
         return position.getRow() >= 0 && position.getRow() <= 7 && position.getColumn() >= 0 &&

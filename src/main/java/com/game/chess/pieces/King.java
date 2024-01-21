@@ -34,6 +34,23 @@ public class King extends Piece {
                 valid.add(position);
             }
         }
+        if (!canCastle(current, board).equals("False")) {
+            if (canCastle(current, board).equals("Right")) {
+                valid.add(new Position(current.getRow(), current.getColumn() + 2));
+            } else {
+                valid.add(new Position(current.getRow(), current.getColumn() - 2));
+            }
+        }
         return valid;
+    }
+    private String canCastle(Position current, Board board) {
+        int row = current.getRow();
+        int column = current.getColumn();
+        if (board.getPiece(new Position(row, column - 1)).type.equals("Blank") && board.getPiece(new Position(row, column - 2)).type.equals("Blank")) {
+            return "Left";
+        } else if (board.getPiece(new Position(row, column + 1)).type.equals("Blank") && board.getPiece(new Position(row, column + 2)).type.equals("Blank")) {
+            return "Right";
+        }
+        return "False";
     }
 }
