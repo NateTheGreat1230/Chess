@@ -37,8 +37,10 @@ public class ChessController {
                 ArrayList<Position> moves = piece.getValidMoves(clicked, game.board);
                 if (piece.type.equals("King")) {
                     moves = game.checkKingMoves(piece, moves);
-                } else if (game.kingInCheck(piece.pieceTeam, game.findKingPosition(piece.pieceTeam))) {
+                } else if (game.kingInCheck(piece.pieceTeam, game.findKingPosition(piece.pieceTeam, game.board), game.board)) {
                     moves = game.checkMoves(piece, moves);
+                } else {
+                    moves = game.putsInCheck(piece, moves);
                 }
                 for (Position position : moves) {
                     Button button = getButton(position);
@@ -121,7 +123,7 @@ public class ChessController {
         }
         game.changeTurn();
         Piece.Team team = game.getTurn();
-        if (game.kingInCheck(team, game.findKingPosition(team))) {
+        if (game.kingInCheck(team, game.findKingPosition(team, game.board), game.board)) {
             errorSpot.setText("Your in Check");
         }
     }

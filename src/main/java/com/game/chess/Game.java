@@ -26,8 +26,7 @@ public class Game {
     public Game getGame() {return this.game;}
     public void takeTurn(Piece piece, Position start, Position end) {
         Piece endPiece = board.getPiece(end);
-        if (endPiece.pieceTeam.equals(Piece.Team.BLANK)) {
-        } else {
+        if (!endPiece.pieceTeam.equals(Piece.Team.BLANK)) {
             if (endPiece.pieceTeam.equals(Piece.Team.WHITE)) {
                 board.whiteTeamList.remove(endPiece);
             } else {
@@ -43,6 +42,25 @@ public class Game {
         } else {
             return checkMate(Piece.Team.BLACK);
         }
+    }
+    public ArrayList<Position> putsInCheck(Piece piece, ArrayList<Position> moves) {
+        if (moves.equals(new ArrayList<>())) {
+            return new ArrayList<>();
+        }
+        if (causesCheck(piece)) {
+            return new ArrayList<>();
+        }
+        return moves;
+    }
+    private boolean causesCheck(Piece piece) {
+        Position OGPosition = board.getPiecePosition(piece);
+        boolean result = false;
+        board.addPiece(OGPosition.getRow(), OGPosition.getColumn(), new Blank(Piece.Team.BLANK));
+        if (kingInCheck(piece.pieceTeam, findKingPosition(piece.pieceTeam, board), board)) {
+            result = true;
+        }
+        board.addPiece(OGPosition.getRow(), OGPosition.getColumn(), piece);
+        return result;
     }
     public ArrayList<Position> checkMoves(Piece piece, ArrayList<Position> allMoves) {
         ArrayList<Position> inCheckMoves = new ArrayList<>();
@@ -60,7 +78,7 @@ public class Game {
         } else {
             enemies = board.whiteTeamList;
         }
-        Position kingPosition = findKingPosition(piece.pieceTeam);
+        Position kingPosition = findKingPosition(piece.pieceTeam, board);
         for (Piece enemy : enemies) {
             Position enemyPosition = board.getPiecePosition(enemy);
             if (enemy.isValidMove(enemyPosition, kingPosition, board) &&
@@ -97,22 +115,22 @@ public class Game {
         return false;
     }
     public boolean checkMate(Piece.Team team) {
-        Position kingPosition = findKingPosition(team);
+        Position kingPosition = findKingPosition(team, board);
         if (kingPosition == null) {
             return true;
         }
-        if (kingInCheck(team, kingPosition)) {
+        if (kingInCheck(team, kingPosition, board)) {
             Piece king = board.getPiece(kingPosition);
             ArrayList<Position> moves = checkKingMoves(king, king.getValidMoves(kingPosition, board));
             return moves.equals(new ArrayList<>());
         }
         return false;
     }
-    public Position findKingPosition(Piece.Team team) {
+    public Position findKingPosition(Piece.Team team, Board board1) {
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 Position currentPos = new Position(row, col);
-                Piece currentPiece = board.getPiece(currentPos);
+                Piece currentPiece = board1.getPiece(currentPos);
                 if (currentPiece != null && currentPiece.type.equals("King") && currentPiece.pieceTeam.equals(team)) {
                     return currentPos;
                 }
@@ -123,24 +141,24 @@ public class Game {
     public ArrayList<Position> checkKingMoves(Piece king, ArrayList<Position> moves) {
         ArrayList<Position> checkedMoves = new ArrayList<>();
         for (Position move : moves) {
-            if (!kingInCheck(king.pieceTeam, move)) {
+            if (!kingInCheck(king.pieceTeam, move, board)) {
                 checkedMoves.add(move);
             }
         }
         return checkedMoves;
     }
-    public boolean kingInCheck(Piece.Team team, Position kingPosition) {
+    public boolean kingInCheck(Piece.Team team, Position kingPosition, Board board1) {
         if (kingPosition == null) {
             return true;
         }
         ArrayList<Piece> enemies;
         if (!team.equals(Piece.Team.WHITE)) {
-            enemies = board.whiteTeamList;
+            enemies = board1.whiteTeamList;
         } else {
-            enemies = board.blackTeamList;
+            enemies = board1.blackTeamList;
         }
         for (Piece enemy : enemies) {
-            if (enemy.isValidMove(board.getPiecePosition(enemy), kingPosition, board)) {
+            if (enemy.isValidMove(board1.getPiecePosition(enemy), kingPosition, board1)) {
                 return true;
             }
         }
