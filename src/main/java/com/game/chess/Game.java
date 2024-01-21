@@ -44,13 +44,24 @@ public class Game {
         }
     }
     public ArrayList<Position> putsInCheck(Piece piece, ArrayList<Position> moves) {
+        ArrayList<Position> movesCopy = moves;
         if (moves.equals(new ArrayList<>())) {
-            return new ArrayList<>();
+            movesCopy = new ArrayList<>();
         }
         if (causesCheck(piece)) {
-            return new ArrayList<>();
+            movesCopy = new ArrayList<>();
+            Position kingSpot = findKingPosition(piece.pieceTeam, board);
+            for (Position temp : moves) {
+                if (kingAttacker(piece, kingSpot, board) != null) {
+                    if (kingAttacker(piece, kingSpot, board).toString().equals(temp.toString())) {
+                        movesCopy.add(temp);
+                    }
+                } else {
+                    System.out.println(kingSpot.toString()+"|"+temp.toString());
+                }
+            }
         }
-        return moves;
+        return movesCopy;
     }
     private boolean causesCheck(Piece piece) {
         Position OGPosition = board.getPiecePosition(piece);
@@ -146,6 +157,28 @@ public class Game {
             }
         }
         return checkedMoves;
+    }
+    public Position kingAttacker(Piece piece, Position kingPosition, Board board1) {
+        Position OGPosition = board.getPiecePosition(piece);
+        board.addPiece(OGPosition.getRow(), OGPosition.getColumn(), new Blank(Piece.Team.BLANK));
+        if (kingPosition == null) {
+            board.addPiece(OGPosition.getRow(), OGPosition.getColumn(), piece);
+            return null;
+        }
+        ArrayList<Piece> enemies;
+        if (!piece.pieceTeam.equals(Piece.Team.WHITE)) {
+            enemies = board1.whiteTeamList;
+        } else {
+            enemies = board1.blackTeamList;
+        }
+        for (Piece enemy : enemies) {
+            if (enemy.isValidMove(board1.getPiecePosition(enemy), kingPosition, board1)) {
+                board.addPiece(OGPosition.getRow(), OGPosition.getColumn(), piece);
+                return board.getPiecePosition(enemy);
+            }
+        }
+        board.addPiece(OGPosition.getRow(), OGPosition.getColumn(), piece);
+        return null;
     }
     public boolean kingInCheck(Piece.Team team, Position kingPosition, Board board1) {
         if (kingPosition == null) {
