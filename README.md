@@ -5,7 +5,7 @@ This project was made for the final project in my software development class.
 This project was made to be a simple chess game with a user friendly, simple and clean user interface.
 ## Installing
 To install this app use the jar file found in out/artifacts/Chess_jar/Chess.jar this requires java 21 or newer.
-To install on linux an example of the chess.desktop file would be `[Desktop Entry]
+To install on linux an example of the chess.desktop file would be `\n[Desktop Entry]
 Name=Chess Game
 Exec=java -jar /path/to/Chess.jar
 Comment=chess
