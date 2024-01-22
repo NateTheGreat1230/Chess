@@ -10,9 +10,9 @@ public class King extends Piece {
         super(pieceTeam);
         type = "King";
         if (pieceTeam.equals(Team.WHITE)) {
-            imgPath = "file:src/main/resources/com/game/chess/piecePics/white-king.png";
+            imgPath = "piecePics/white-king.png";
         } else {
-            imgPath = "file:src/main/resources/com/game/chess/piecePics/black-king.png";
+            imgPath = "piecePics/black-king.png";
         }
     }
     @Override

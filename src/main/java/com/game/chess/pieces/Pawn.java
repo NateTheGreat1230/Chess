@@ -10,9 +10,9 @@ public class Pawn extends Piece {
         super(pieceTeam);
         type = "Pawn";
         if (pieceTeam.equals(Team.WHITE)) {
-            imgPath = "file:src/main/resources/com/game/chess/piecePics/white-pawn.png";
+            imgPath = "piecePics/white-pawn.png";
         } else {
-            imgPath = "file:src/main/resources/com/game/chess/piecePics/black-pawn.png";
+            imgPath = "piecePics/black-pawn.png";
         }
     }
     @Override

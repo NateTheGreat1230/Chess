@@ -5,11 +5,13 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Window;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 public class ChessController {
     Game game = new Game();
@@ -78,7 +80,8 @@ public class ChessController {
                 if (piece.type.equals("Blank")) {
                     buttons.get(i).get(j).setStyle("-fx-background-image: null;");
                 } else {
-                    buttons.get(i).get(j).setStyle("-fx-background-image: url('" + piece.imgPath + "');");
+                    Image pieceImage = new Image(Objects.requireNonNull(getClass().getResource(piece.imgPath)).toExternalForm());
+                    buttons.get(i).get(j).setStyle("-fx-background-image: url('"+pieceImage.getUrl()+"');");
                 }
             }
         }

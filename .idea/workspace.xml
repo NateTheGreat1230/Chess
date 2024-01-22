@@ -10,9 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d94bc922-951f-45ad-ba41-bbfd2b081866" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/game/chess/ChessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/ChessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/Bishop.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,31 +52,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.ChessApp.executor": "Run",
-    "Application.Main.executor": "Run",
-    "JAR Application.Chess-1.0-SNAPSHOT.jar.executor": "Run",
-    "Maven.Chess [clean].executor": "Run",
-    "Maven.Chess [compile].executor": "Run",
-    "Maven.Chess [install].executor": "Run",
-    "Maven.Chess [package].executor": "Run",
-    "Maven.Chess [site].executor": "Run",
-    "Maven.Chess [test].executor": "Run",
-    "Maven.Chess [validate].executor": "Run",
-    "Maven.Chess [verify].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/natethegreat/IdeaProjects/Chess/src/main/resources/com/game/chess/piecePics/black-bishop.png",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.24712643"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.ChessApp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.Chess-1.0-SNAPSHOT.jar.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.Chess.jar.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Chess [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Chess [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Chess [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Chess [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Chess [site].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Chess [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Chess [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Chess [verify].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/natethegreat/IdeaProjects/Chess/src/main/resources/com/game/chess/piecePics/black-bishop.png&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.24712643&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/com/game/chess" />
@@ -85,7 +86,7 @@
       <recent name="com.game.chess" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ChessApp">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="ChessApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.game.chess.ChessApp" />
       <module name="Chess" />
@@ -112,9 +113,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Chess.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Chess_jar/Chess.jar" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JAR Application.Chess.jar" />
         <item itemvalue="Application.ChessApp" />
       </list>
     </recent_temporary>

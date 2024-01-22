@@ -10,9 +10,9 @@ public class Rook extends Piece {
         super(pieceTeam);
         type = "Rook";
         if (pieceTeam.equals(Team.WHITE)) {
-            imgPath = "file:src/main/resources/com/game/chess/piecePics/white-rook.png";
+            imgPath = "piecePics/white-rook.png";
         } else {
-            imgPath = "file:src/main/resources/com/game/chess/piecePics/black-rook.png";
+            imgPath = "piecePics/black-rook.png";
         }
     }
     @Override
