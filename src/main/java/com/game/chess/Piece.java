@@ -7,6 +7,8 @@ public class Piece {
     public String imgPath;
     public final Team pieceTeam;
     public String type;
+    public boolean castle = false;
+    public boolean canEnpassant = false;
     public Piece(Team pieceTeam) {this.pieceTeam = pieceTeam;}
     public ArrayList<Position> getValidMoves(Position current, Board board) {return new ArrayList<>();}
     public boolean isValidMove(Position from, Position to, Board board){

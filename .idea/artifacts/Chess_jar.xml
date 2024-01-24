@@ -29,6 +29,7 @@
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/gluonhq/attach/audio/4.0.17/audio-4.0.17.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/github/almasb/fxgl-io/17.3/fxgl-io-17.3.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/21/javafx-base-21.jar" path-in-jar="/" />
+      <element id="file-copy" path="/bin/java" />
     </root>
   </artifact>
 </component>

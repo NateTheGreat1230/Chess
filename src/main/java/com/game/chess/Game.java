@@ -1,6 +1,7 @@
 package com.game.chess;
 
 import com.game.chess.pieces.Blank;
+import com.game.chess.pieces.Queen;
 import java.util.ArrayList;
 
 public class Game {
@@ -33,8 +34,50 @@ public class Game {
                 board.blackTeamList.remove(endPiece);
             }
         }
-        board.addPiece(start.getRow(), start.getColumn(), new Blank(Piece.Team.BLANK));
-        board.addPiece(end.getRow(), end.getColumn(), piece);
+        if (piece.type.equals("King") && piece.castle) {
+            board.addPiece(start.getRow(), start.getColumn(), new Blank(Piece.Team.BLANK));
+            board.addPiece(end.getRow(), end.getColumn(), piece);
+            if (board.getPiece(new Position(start.getRow(), end.getColumn() - 1)).type.equals("Rook")) {
+                Position rook = new Position(start.getRow(), end.getColumn() - 1);
+                Position rookEnd = new Position(start.getRow(), start.getColumn() - 1);
+                board.addPiece(rookEnd.getRow(), rookEnd.getColumn(), board.getPiece(new Position(start.getRow(), end.getColumn() - 1)));
+                board.addPiece(rook.getRow(), rook.getColumn(), new Blank(Piece.Team.BLANK));
+            } else if (board.getPiece(new Position(start.getRow(), end.getColumn() + 1)).type.equals("Rook")) {
+                Position rook = new Position(start.getRow(), end.getColumn() + 1);
+                Position rookEnd = new Position(start.getRow(), start.getColumn() + 1);
+                board.addPiece(rookEnd.getRow(), rookEnd.getColumn(), board.getPiece(new Position(start.getRow(), end.getColumn() + 1)));
+                board.addPiece(rook.getRow(), rook.getColumn(), new Blank(Piece.Team.BLANK));
+            }
+        } else if (piece.type.equals("Pawn") && piece.canEnpassant) {
+            board.addPiece(start.getRow(), start.getColumn(), new Blank(Piece.Team.BLANK));
+            board.addPiece(end.getRow(), end.getColumn(), piece);
+            if (board.getPiece(new Position(end.getRow() + 1, end.getColumn())).type.equals("Pawn")) {
+                Position pawn = new Position(end.getRow() + 1, end.getColumn());
+                board.blackTeamList.remove(board.getPiece(pawn));
+                board.addPiece(pawn.getRow(), pawn.getColumn(), new Blank(Piece.Team.BLANK));
+            } else if (board.getPiece(new Position(end.getRow() - 1, end.getColumn())).type.equals("Pawn")) {
+                Position pawn = new Position(end.getRow() - 1, end.getColumn());
+                board.whiteTeamList.remove(board.getPiece(pawn));
+                board.addPiece(pawn.getRow(), pawn.getColumn(), new Blank(Piece.Team.BLANK));
+            }
+        } else if (piece.type.equals("Pawn") && end.getRow() == 0 || end.getRow() == 7) {
+            board.addPiece(start.getRow(), start.getColumn(), new Blank(Piece.Team.BLANK));
+            board.addPiece(end.getRow(), end.getColumn(), piece);
+            if (end.getRow() == 0 && piece.pieceTeam.equals(Piece.Team.WHITE)) {
+                board.whiteTeamList.remove(board.getPiece(end));
+                Queen queen = new Queen(piece.pieceTeam);
+                board.addPiece(end.getRow(), end.getColumn(), queen);
+                board.whiteTeamList.add(queen);
+            } else if (end.getRow() == 7 && piece.pieceTeam.equals(Piece.Team.BLACK)) {
+                board.blackTeamList.remove(board.getPiece(end));
+                Queen queen = new Queen(piece.pieceTeam);
+                board.addPiece(end.getRow(), end.getColumn(), queen);
+                board.blackTeamList.add(queen);
+            }
+        } else {
+            board.addPiece(start.getRow(), start.getColumn(), new Blank(Piece.Team.BLANK));
+            board.addPiece(end.getRow(), end.getColumn(), piece);
+        }
     }
     public boolean checkWin() {
         if (!isWhiteTurn()) {
@@ -53,27 +96,10 @@ public class Game {
                     if (kingAttacker(piece, kingSpot, board).toString().equals(temp.toString())) {
                         movesCopy.add(temp);
                     }
-//                    if (!moveCauseCheck(piece, temp)) {
-//                        movesCopy.add(temp);
-//                    }
                 }
             }
         }
         return movesCopy;
-    }
-    public boolean moveCauseCheck(Piece piece, Position temp) {
-        Position kingSpot = findKingPosition(piece.pieceTeam, board);
-        boolean result = false;
-        Position OGPosition = board.getPiecePosition(piece);
-        Piece OGPiece = board.getPiece(temp);
-        board.addPiece(OGPosition.getRow(), OGPosition.getColumn(), new Blank(Piece.Team.BLANK));
-        board.addPiece(temp.getRow(), temp.getColumn(), piece);
-        if (kingInCheck(piece.pieceTeam, kingSpot, board)) {
-            result = true;
-        }
-        board.addPiece(OGPosition.getRow(), OGPosition.getColumn(), piece);
-        board.addPiece(temp.getRow(), temp.getColumn(), OGPiece);
-        return result;
     }
     private boolean causesCheck(Piece piece) {
         Position OGPosition = board.getPiecePosition(piece);

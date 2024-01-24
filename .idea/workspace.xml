@@ -10,7 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d94bc922-951f-45ad-ba41-bbfd2b081866" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Chess_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Chess_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Chess_jar/Chess.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Chess_jar/Chess.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/game/chess/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/game/chess/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/Piece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/King.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/game/chess/pieces/Pawn.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +76,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/natethegreat/IdeaProjects/Chess/src/main/resources/com/game/chess/piecePics/black-bishop.png&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/bin/java&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.24712643&quot;

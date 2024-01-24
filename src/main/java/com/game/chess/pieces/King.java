@@ -37,19 +37,27 @@ public class King extends Piece {
         if (!canCastle(current, board).equals("False")) {
             if (canCastle(current, board).equals("Right")) {
                 valid.add(new Position(current.getRow(), current.getColumn() + 2));
+                castle = true;
             } else {
-                valid.add(new Position(current.getRow(), current.getColumn() - 2));
+                valid.add(new Position(current.getRow(), current.getColumn() - 3));
+                castle = true;
             }
         }
         return valid;
     }
     private String canCastle(Position current, Board board) {
-        int row = current.getRow();
-        int column = current.getColumn();
-        if (board.getPiece(new Position(row, column - 1)).type.equals("Blank") && board.getPiece(new Position(row, column - 2)).type.equals("Blank")) {
-            return "Left";
-        } else if (board.getPiece(new Position(row, column + 1)).type.equals("Blank") && board.getPiece(new Position(row, column + 2)).type.equals("Blank")) {
-            return "Right";
+        if (pieceTeam.equals(Team.WHITE) && current.toString().equals(new Position(7, 4).toString())) {
+            if (board.getPiece(new Position(7, 5)).type.equals("Blank") && board.getPiece(new Position(7, 6)).type.equals("Blank") && board.getPiece(new Position(7, 7)).type.equals("Rook")) {
+                return "Right";
+            } else if (board.getPiece(new Position(7, 3)).type.equals("Blank") && board.getPiece(new Position(7, 2)).type.equals("Blank") && board.getPiece(new Position(7, 1)).type.equals("Blank") && board.getPiece(new Position(7, 0)).type.equals("Rook")) {
+                return "Left";
+            }
+        } else if (pieceTeam.equals(Team.BLACK) && current.toString().equals(new Position(0, 4).toString())) {
+            if (board.getPiece(new Position(0, 5)).type.equals("Blank") && board.getPiece(new Position(0, 6)).type.equals("Blank") && board.getPiece(new Position(0, 7)).type.equals("Rook")) {
+                return "Right";
+            } else if (board.getPiece(new Position(0, 3)).type.equals("Blank") && board.getPiece(new Position(0, 2)).type.equals("Blank") && board.getPiece(new Position(0, 1)).type.equals("Blank") && board.getPiece(new Position(0, 0)).type.equals("Rook")) {
+                return "Left";
+            }
         }
         return "False";
     }
